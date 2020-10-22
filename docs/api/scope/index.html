@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>api/scope · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Scope Methods"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="api/scope · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="# Scope Methods"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">api/scope</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="scope-methods"></a><a href="#scope-methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scope Methods</h1>
+<h3><a class="anchor" aria-hidden="true" id="class-rucioclientscopeclientscopeclientrucio_hostnone-auth_hostnone-accountnone-ca_certnone-auth_typenone-credsnone-timeout600-user_agentrucio-clients-vonone"></a><a href="#class-rucioclientscopeclientscopeclientrucio_hostnone-auth_hostnone-accountnone-ca_certnone-auth_typenone-credsnone-timeout600-user_agentrucio-clients-vonone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class rucio.client.scopeclient.ScopeClient(rucio_host=None, auth_host=None, account=None, ca_cert=None, auth_type=None, creds=None, timeout=600, user_agent='rucio-clients', vo=None)</h3>
+<p>Bases: <code>rucio.client.baseclient.BaseClient</code></p>
+<p>Scope client class for working with rucio scopes</p>
+<h4><a class="anchor" aria-hidden="true" id="scope_baseurl--accounts"></a><a href="#scope_baseurl--accounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SCOPE_BASEURL( = 'accounts')</h4>
+<h4><a class="anchor" aria-hidden="true" id="add_scopeaccount-scope"></a><a href="#add_scopeaccount-scope" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_scope(account, scope)</h4>
+<p>Sends the request to add a new scope.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – the name of the account to add the scope to.
+
+
+* **scope** – the name of the new scope.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if scope was created successfully.</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **Duplicate** – if scope already exists.
+
+
+* **AccountNotFound** – if account doesn’t exist.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="list_scopes"></a><a href="#list_scopes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_scopes()</h4>
+<p>Sends the request to list all scopes.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a list containing the names of all scopes.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_scopes_for_accountaccount"></a><a href="#list_scopes_for_accountaccount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_scopes_for_account(account)</h4>
+<p>Sends the request to list all scopes for a rucio account.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>account</strong> – the rucio account to list scopes for.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a list containing the names of all scopes for a rucio account.</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **AccountNotFound** – if account doesn’t exist.
+
+
+* **ScopeNotFound** – if no scopes exist for account.
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

@@ -1,0 +1,1184 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>restapi/did · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# DID Rest API"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="restapi/did · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="# DID Rest API"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">restapi/did</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="did-rest-api"></a><a href="#did-rest-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DID Rest API</h1>
+<p><strong>Overview</strong></p>
+<p>| Resource</p>
+<p>| Operation</p>
+<p>| Description</p>
+<p>|
+| ------------------- | ------------------------------------------------------ | ----------------------------------- |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|                     | <a href="#post--dids-bulkmeta">POST /dids/bulkmeta</a></p>
+<pre><code class="hljs">                                |                                     |
+</code></pre>
+<p>| AssociatedRules</p>
+<pre><code class="hljs"> | [GET /dids/(scope)/(name)/associated_rules](#get--dids-(scope)-(name)-associated_rules)
+
+          | List associated rules of DID.
+
+   |
+</code></pre>
+<p>| Attachement</p>
+<pre><code class="hljs">     | [GET /dids/(scope)/(name)/dids](#get--dids-(scope)-(name)-dids)
+
+                      | Get DID contents.
+
+               |
+</code></pre>
+<p>| AttachementHistory</p>
+<p>| <a href="#get--dids-(scope)-(name)-dids-history">GET /dids/(scope)/(name)/dids/history</a></p>
+<pre><code class="hljs">              | List the content history of a DID.
+</code></pre>
+<p>|
+| Attachements</p>
+<pre><code class="hljs">    | [POST /dids/attachments](#post--dids-attachments)
+
+                             | Attach DIDs to DIDs.
+
+            |
+</code></pre>
+<p>| Attachment</p>
+<pre><code class="hljs">      | [POST /dids/(scope)/(name)/dids](#post--dids-(scope)-(name)-dids)
+
+                     | Append DID to DID.
+
+              |
+</code></pre>
+<p>| BulkDID</p>
+<pre><code class="hljs">         | [POST /dids/](#post--dids-)
+
+                                        | Bulk add DIDs.
+
+                  |
+</code></pre>
+<p>| DIDs</p>
+<pre><code class="hljs">            | [POST /dids/(scope)/(name)](#post--dids-(scope)-(name))
+
+                          | Create a new DID.
+
+               |
+</code></pre>
+<p>|                     | <a href="#get--dids-(scope)-(name)">GET /dids/(scope)/(name)</a></p>
+<pre><code class="hljs">                           | Retrieve a single DID.
+
+          |
+</code></pre>
+<p>|                     | <a href="#put--dids-(scope)-(name)-status">PUT /dids/(scope)/(name)/status</a></p>
+<pre><code class="hljs">                    | Update DID status.
+
+              |
+</code></pre>
+<p>|                     | <a href="#delete--dids-(scope)-(name)-dids">DELETE /dids/(scope)/(name)/dids</a></p>
+<pre><code class="hljs">                   | Detach DID from DID.
+
+            |
+</code></pre>
+<p>| Files</p>
+<pre><code class="hljs">           | [GET /dids/(scope)/(name)/files](#get--dids-(scope)-(name)-files)
+
+                     | List replicas of DID.
+
+           |
+</code></pre>
+<p>| GUIDLookup</p>
+<pre><code class="hljs">      | [GET /dids/(guid)/guid](#get--dids-(guid)-guid)
+
+                              | List file by GUID.
+
+              |
+</code></pre>
+<p>| Meta</p>
+<pre><code class="hljs">            | [POST /dids/(scope)/(name)/meta/(key)](#post--dids-(scope)-(name)-meta-(key))
+
+               | Add DID metadata.
+
+               |
+</code></pre>
+<p>|                     | <a href="#get--dids-(scope)-(name)-meta">GET /dids/(scope)/(name)/meta</a></p>
+<pre><code class="hljs">                      | List DID metadata.
+
+              |
+</code></pre>
+<p>| NewDIDs</p>
+<pre><code class="hljs">         | [GET /dids/new](#get--dids-new)
+
+                                      | List recent DIDs.
+
+               |
+</code></pre>
+<p>| Parents</p>
+<pre><code class="hljs">         | [GET /dids/(scope)/(name)/parents](#get--dids-(scope)-(name)-parents)
+
+                   | List parents of DID.
+
+            |
+</code></pre>
+<p>| Resurrect</p>
+<pre><code class="hljs">       | [POST /dids/resurrect](#post--dids-resurrect)
+
+                               | Resurrect DID.
+
+                  |
+</code></pre>
+<p>| Rules</p>
+<pre><code class="hljs">           | [GET /dids/(scope)/(name)/rules](#get--dids-(scope)-(name)-rules)
+
+                     | List rules of DID.
+
+              |
+</code></pre>
+<p>| Sample</p>
+<pre><code class="hljs">          | [POST /dids/(input_scope)/(input_name)/(output_scope)/(output_name)/(nbfiles)/sample](#post--dids-(input_scope)-(input_name)-(output_scope)-(output_name)-(nbfiles)-sample)
+</code></pre>
+<p>| Create a sample DID.</p>
+<pre><code class="hljs">            |
+</code></pre>
+<p>| Scopes</p>
+<pre><code class="hljs">          | [GET /dids/(scope)/](#get--dids-(scope)-)
+
+                                                              | List all dids for scope
+
+         |
+</code></pre>
+<p>| Search</p>
+<pre><code class="hljs">          | [GET /dids/(scope)/dids/search_extended](#get--dids-(scope)-dids-search_extended)
+
+                                          | Search DIDs in a scope with given metadata.
+</code></pre>
+<p>|
+|                     | <a href="#get--dids-(scope)-dids-search">GET /dids/(scope)/dids/search</a></p>
+<pre><code class="hljs">                                                   |                                             |
+</code></pre>
+<p><strong>Details</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="post-didsattachments"></a><a href="#post-didsattachments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/dids/attachments()</h3>
+<p>Attach DIDs to DIDs</p>
+<!-- :quickref: Attachements; Attach DIDs to DIDs. -->
+<h3><a class="anchor" aria-hidden="true" id="post-didsresurrect"></a><a href="#post-didsresurrect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/dids/resurrect()</h3>
+<p>Resurrect DIDs.</p>
+<!-- :quickref: Resurrect; Resurrect DID. -->
+HTTP Success:
+<pre><code class="hljs">201 Created
+</code></pre>
+<p>HTTP Error:</p>
+<pre><code class="hljs">401 Unauthorized
+404 Not Found
+409 Conflict
+500 Internal Error
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="post-didsbulkmeta"></a><a href="#post-didsbulkmeta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/dids/bulkmeta()</h3>
+<p>List all meta of a list of data identifiers.
+HTTP Success:</p>
+<blockquote>
+<p>200 OK</p>
+</blockquote>
+<p>HTTP Error:</p>
+<pre><code class="hljs">400 Bad Request
+401 Unauthorized
+404 DataIdentifierNotFound
+500 InternalError
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dictionaries containing all meta.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-didsnew"></a><a href="#get-didsnew" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/dids/new()</h3>
+<p>Returns list of recent identifiers.</p>
+<!-- :quickref: NewDIDs; List recent DIDs. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Query Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **type** – the DID type.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – DIDs found
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>List recently created DIDs.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-dids"></a><a href="#post-dids" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/dids/()</h3>
+<p>Add new DIDs in bulk.</p>
+<!-- :quickref: BulkDID; Bulk add DIDs.
+<p><strong>Example request</strong>: --&gt;</p>
+<pre><code class="hljs"><span class="hljs-keyword">POST</span> <span class="hljs-string">/dids/</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: rucio.cern.ch
+
+<span class="json">[
+  {<span class="hljs-attr">"scope"</span>: <span class="hljs-string">"scope1"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CONTAINER"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"container1"</span>,
+   <span class="hljs-attr">"account"</span>: <span class="hljs-string">"jdoe"</span>, <span class="hljs-attr">"length"</span>: <span class="hljs-number">1</span>},
+  {<span class="hljs-attr">"scope"</span>: <span class="hljs-string">"scope1"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"DATASET"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"dataset1"</span>,
+   <span class="hljs-attr">"account"</span>: <span class="hljs-string">"jdoe"</span>, <span class="hljs-attr">"length"</span>: <span class="hljs-number">3</span>}
+]
+</span></code></pre>
+<p><strong>Example response</strong>:</p>
+<pre><code class="hljs">HTTP/1.1 <span class="hljs-number">201</span> Created
+<span class="hljs-attribute">Vary</span>: Accept
+</code></pre>
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Accept](https://tools.ietf.org/html/rfc7231#section-5.3.2) – application/json
+</code></pre>
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **scope** (*string*) – the new DID scope
+
+
+* **name** (*string*) – the new DID name
+
+
+* **type** (*string*) – the new DID type
+
+
+* **account** (*string*) – the owner account of the new DID
+
+
+* **statuses** (*string*) – monotonic
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – new DIDs created
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – DID already exists
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-didsscopedidssearch_extended"></a><a href="#get-didsscopedidssearch_extended" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/dids/(scope/dids/search_extended()</h3>
+<p>List all data identifiers in a scope which match a given metadata.
+Extended Version to included meteadata from various plugins.</p>
+<!-- :quickref: Search; Search DIDs in a scope with given metadata. -->
+**Example request**:
+<pre><code class="hljs">GET <span class="hljs-meta-keyword">/dids/</span>scope1<span class="hljs-meta-keyword">/dids/</span>search_extended?type=collection<span class="hljs-variable">&amp;long</span>=True<span class="hljs-variable">&amp;length</span>.lt=<span class="hljs-number">10</span> HTTP/<span class="hljs-number">1.1</span>
+<span class="hljs-symbol">Host:</span> rucio.cern.ch
+</code></pre>
+<p><strong>Example response</strong>:</p>
+<pre><code class="hljs">HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Vary</span>: Accept
+<span class="hljs-attribute">Content-Type</span>: application/x-json-stream
+
+<span class="json">{<span class="hljs-attr">"scope"</span>: <span class="hljs-string">"scope1"</span>, <span class="hljs-attr">"did_type"</span>: <span class="hljs-string">"CONTAINER"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"container1"</span>,
+ <span class="hljs-attr">"bytes"</span>: <span class="hljs-number">1234</span>, <span class="hljs-attr">"length"</span>: <span class="hljs-number">1</span>}
+{<span class="hljs-attr">"scope"</span>: <span class="hljs-string">"scope1"</span>, <span class="hljs-attr">"did_type"</span>: <span class="hljs-string">"DATASET"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"dataset1"</span>,
+ <span class="hljs-attr">"bytes"</span>: <span class="hljs-number">234</span>, <span class="hljs-attr">"length"</span>: <span class="hljs-number">3</span>}
+</span></code></pre>
+<ul>
+<li><strong>Query Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **type** – specify a DID type to search for
+
+
+* **limit** – The maximum number of DIDs returned.
+
+
+* **long** – set to True for long output, otherwise only name
+
+
+* **recursive** – set to True to recursively list DIDs content
+
+
+* **created_before** – Date string in RFC-1123 format where the creation date was earlier
+
+
+* **created_after** – Date string in RFC-1123 format where the creation date was later
+
+
+* **length** – Exact number of attached DIDs
+
+
+* **length.gt** – Number of attached DIDs greater than
+
+
+* **length.lt** – Number of attached DIDs less than
+
+
+* **length.gte** – Number of attached DIDs greater than or equal to
+
+
+* **length.lte** – Number of attached DIDs less than or equal to
+
+
+* **name** – Name or pattern of a DID name
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – DIDs found
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Invalid key in filters
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – Wrong DID type
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Line separated name of DIDs or dictionaries of DIDs for long option</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-didsscopedidssearch"></a><a href="#get-didsscopedidssearch" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/dids/(scope/dids/search()</h3>
+<p>List all data identifiers in a scope which match a given metadata.</p>
+<!-- :quickref: Search; Search DIDs in a scope with given metadata. -->
+**Example request**:
+<pre><code class="hljs">GET <span class="hljs-meta-keyword">/dids/</span>scope1<span class="hljs-meta-keyword">/dids/</span>search?type=collection<span class="hljs-variable">&amp;long</span>=True<span class="hljs-variable">&amp;length</span>.lt=<span class="hljs-number">10</span> HTTP/<span class="hljs-number">1.1</span>
+<span class="hljs-symbol">Host:</span> rucio.cern.ch
+</code></pre>
+<p><strong>Example response</strong>:</p>
+<pre><code class="hljs">HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Vary</span>: Accept
+<span class="hljs-attribute">Content-Type</span>: application/x-json-stream
+
+<span class="json">{<span class="hljs-attr">"scope"</span>: <span class="hljs-string">"scope1"</span>, <span class="hljs-attr">"did_type"</span>: <span class="hljs-string">"CONTAINER"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"container1"</span>,
+ <span class="hljs-attr">"bytes"</span>: <span class="hljs-number">1234</span>, <span class="hljs-attr">"length"</span>: <span class="hljs-number">1</span>}
+{<span class="hljs-attr">"scope"</span>: <span class="hljs-string">"scope1"</span>, <span class="hljs-attr">"did_type"</span>: <span class="hljs-string">"DATASET"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"dataset1"</span>,
+ <span class="hljs-attr">"bytes"</span>: <span class="hljs-number">234</span>, <span class="hljs-attr">"length"</span>: <span class="hljs-number">3</span>}
+</span></code></pre>
+<ul>
+<li><strong>Query Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **type** – specify a DID type to search for
+
+
+* **limit** – The maximum number of DIDs returned.
+
+
+* **long** – set to True for long output, otherwise only name
+
+
+* **recursive** – set to True to recursively list DIDs content
+
+
+* **created_before** – Date string in RFC-1123 format where the creation date was earlier
+
+
+* **created_after** – Date string in RFC-1123 format where the creation date was later
+
+
+* **length** – Exact number of attached DIDs
+
+
+* **length.gt** – Number of attached DIDs greater than
+
+
+* **length.lt** – Number of attached DIDs less than
+
+
+* **length.gte** – Number of attached DIDs greater than or equal to
+
+
+* **length.lte** – Number of attached DIDs less than or equal to
+
+
+* **name** – Name or pattern of a DID name
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – DIDs found
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Invalid key in filters
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – Wrong DID type
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Line separated name of DIDs or dictionaries of DIDs for long option</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-didsscopenamedidshistory"></a><a href="#get-didsscopenamedidshistory" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/dids/(scope/(name/dids/history()</h3>
+<p>Returns the contents history of a data identifier.</p>
+<!-- :quickref: AttachementHistory; List the content history of a DID. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **scope** – The scope of the data identifier.
+
+
+* **name** – The name of the data identifier.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – DID found
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – DID not found
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Stream of dictionarys with DIDs</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-didsguidguid"></a><a href="#get-didsguidguid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/dids/(guid/guid()</h3>
+<p>Return the file associated to a GUID.</p>
+<!-- :quickref: GUIDLookup; List file by GUID. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **guid** – the GUID to query by.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – DID found
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – DID not found
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>List of files for given GUID</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-didsscopenameassociated_rules"></a><a href="#get-didsscopenameassociated_rules" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/dids/(scope/(name/associated_rules()</h3>
+<p>Return all associated rules of a file.</p>
+<!-- :quickref: AssociatedRules; List associated rules of DID. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **scope** – The scope of the data identifier.
+
+
+* **name** – The name of the data identifier.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – DID found
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – DID not found
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>List of associated rules.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-didsscopenameparents"></a><a href="#get-didsscopenameparents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/dids/(scope/(name/parents()</h3>
+<p>List all parents of a data identifier.</p>
+<!-- :quickref: Parents; List parents of DID. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **scope** – The scope of the data identifier.
+
+
+* **name** – The name of the data identifier.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – DID found
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – DID not found
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dictionary containing all dataset information.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-didsscopename"></a><a href="#post-didsscopename" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/dids/(scope/(name)</h3>
+<p>Create a new data identifier.</p>
+<!-- :quickref: DIDs; Create a new DID. -->
+```
+POST /dids/scope1/container1 HTTP/1.1
+Host: rucio.cern.ch
+<p>{&quot;type&quot;: &quot;CONTAINER&quot;, &quot;lifetime&quot;: 86400},</p>
+<pre><code class="hljs">
+*<span class="hljs-strong">*Example response*</span><span class="hljs-strong">*:
+
+</span></code></pre>
+<p>HTTP/1.1 201 Created
+Vary: Accept</p>
+<pre><code class="hljs">
+
+<span class="markdown"><span class="hljs-bullet">* </span><span class="hljs-strong">**Request Headers**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">Accept</span>](<span class="hljs-link">https://tools.ietf.org/html/rfc7231#section-5.3.2</span>) – application/json
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**scope**</span> – data identifier scope.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**name**</span> – data identifier name.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Request JSON Object**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**type**</span> (<span class="hljs-emphasis">*string*</span>) – the new DID type
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**statuses**</span> (<span class="hljs-emphasis">*dict*</span>) – Dictionary with statuses, e.g. {‘monotonic’:True}
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**meta**</span> (<span class="hljs-emphasis">*dict*</span>) – Dictionary with metadata, e.g. {‘length’:1234}
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**rules**</span> (<span class="hljs-emphasis">*dict*</span>) – Replication rules associated with the did. e.g., [{‘copies’: 2, ‘rse_expression’: ‘TIERS1’}, ]
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**lifetime**</span> (<span class="hljs-emphasis">*int*</span>) – DID’s liftime in seconds.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**dids**</span> (<span class="hljs-emphasis">*list*</span>) – The content.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**rse**</span> (<span class="hljs-emphasis">*string*</span>) – The RSE name when registering replicas.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">201 Created</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2</span>) – new DIDs created
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">409 Conflict</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10</span>) – DID already exists
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">500 Internal Server Error</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1</span>) – Database Exception
+
+
+
+<span class="hljs-section">### GET (/dids/(scope/(name)</span>
+Retrieve a single data identifier.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: DIDs; Retrieve a single DID. --&gt;</span></span>
+<span class="hljs-strong">**Example request**</span>:
+
+</span></code></pre>
+<p>GET /dids/scope1/dataset1?dynamic HTTP/1.1
+Host: rucio.cern.ch</p>
+<pre><code class="hljs">
+*<span class="hljs-strong">*Example response*</span><span class="hljs-strong">*:
+
+</span></code></pre>
+<p>HTTP/1.1 200 OK
+Vary: Accept
+Content-Type: application/json</p>
+<p>{&quot;scope&quot;: &quot;scope1&quot;, &quot;did_type&quot;: &quot;DATASET&quot;, &quot;name&quot;: &quot;dataset1&quot;,
+&quot;bytes&quot;: 234, &quot;length&quot;: 3, &quot;account&quot;: &quot;jdoe&quot;, &quot;open&quot;: True,
+&quot;monotonic&quot;: False, &quot;expired_at&quot;: null}</p>
+<pre><code class="hljs">
+
+<span class="markdown"><span class="hljs-bullet">* </span><span class="hljs-strong">**Query Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**dynamic**</span> – Flag to dynamically calculate size for open DIDs
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Response Headers**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">Content-Type</span>](<span class="hljs-link">https://tools.ietf.org/html/rfc7231#section-3.1.1.5</span>) – application/json
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">200 OK</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1</span>) – DID found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – Scope not found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">406 Not Acceptable</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7</span>) – Not Acceptable.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Returns**</span>
+
+<span class="hljs-code">    Dictionary with DID metadata</span>
+
+
+
+<span class="hljs-section">### PUT (/dids/(scope/(name/status()</span>
+Update data identifier status.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: DIDs; Update DID status. --&gt;</span></span>
+</span></code></pre>
+<p>PUT /dids/scope1/container1 HTTP/1.1
+Host: rucio.cern.ch</p>
+<p>{&quot;open&quot;: False},</p>
+<pre><code class="hljs">
+*<span class="hljs-strong">*Example response*</span><span class="hljs-strong">*:
+
+</span></code></pre>
+<p>HTTP/1.1 200 OK
+Vary: Accept</p>
+<pre><code class="hljs">
+
+<span class="markdown"><span class="hljs-bullet">* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**scope**</span> – data identifier scope.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**name**</span> – data identifier name.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Request JSON Object**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**open**</span> (<span class="hljs-emphasis">*bool*</span>) – open or close did
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">200 OK</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1</span>) – DIDs successfully updated
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – DID not found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">409 Conflict</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10</span>) – Wrong status
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">500 Internal Server Error</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1</span>) – Database Exception
+
+
+
+<span class="hljs-section">### GET (/dids/(scope/(name/files()</span>
+List all replicas of a data identifier.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: Files; List replicas of DID. --&gt;</span></span>
+<span class="hljs-bullet">
+* </span><span class="hljs-strong">**Response Headers**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">Content-Type</span>](<span class="hljs-link">https://tools.ietf.org/html/rfc7231#section-3.1.1.5</span>) – application/x-json-stream
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**scope**</span> – The scope of the data identifier.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**name**</span> – The name of the data identifier.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Query Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**long**</span> – Flag to trigger long output
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">200 OK</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1</span>) – DID found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – DID not found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">406 Not Acceptable</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7</span>) – Not Acceptable
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">500 Internal Server Error</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1</span>) – Database Exception
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Returns**</span>
+
+<span class="hljs-code">    A dictionary containing all replicas information.</span>
+
+
+
+<span class="hljs-section">### GET (/dids/(scope/(name/rules()</span>
+Return all rules of a given DID.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: Rules; List rules of DID. --&gt;</span></span>
+<span class="hljs-bullet">
+* </span><span class="hljs-strong">**Response Headers**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">Content-Type</span>](<span class="hljs-link">https://tools.ietf.org/html/rfc7231#section-3.1.1.5</span>) – application/x-json-stream
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**scope**</span> – The scope of the data identifier.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**name**</span> – The name of the data identifier.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">200 OK</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1</span>) – DID found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – DID not found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">406 Not Acceptable</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7</span>) – Not Acceptable
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">500 Internal Server Error</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1</span>) – Database Exception
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Returns**</span>
+
+<span class="hljs-code">    List of replication rules.</span>
+
+
+
+<span class="hljs-section">### POST (/dids/(scope/(name/meta/(key)</span>
+Add metadata to a data identifier.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: Meta; Add DID metadata. --&gt;</span></span>
+HTTP Success:
+
+<span class="hljs-code">    201 Created</span>
+
+HTTP Error:
+
+<span class="hljs-code">    400 Bad Request</span>
+<span class="hljs-code">    401 Unauthorized</span>
+<span class="hljs-code">    404 Not Found</span>
+<span class="hljs-code">    409 Conflict</span>
+<span class="hljs-code">    500 Internal Error</span>
+<span class="hljs-bullet">
+
+* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**scope**</span> – The scope name.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**name**</span> – The data identifier name.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**key**</span> – the key.
+
+
+
+<span class="hljs-section">### GET (/dids/(scope/(name/meta()</span>
+List all meta of a data identifier.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: Meta; List DID metadata. --&gt;</span></span>
+<span class="hljs-bullet">
+* </span><span class="hljs-strong">**Response Headers**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">Content-Type</span>](<span class="hljs-link">https://tools.ietf.org/html/rfc7231#section-3.1.1.5</span>) – application/json
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**scope**</span> – The scope of the data identifier.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**name**</span> – The name of the data identifier.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">200 OK</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1</span>) – DID found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – DID not found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">406 Not Acceptable</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7</span>) – Not Acceptable
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">500 Internal Server Error</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1</span>) – Database Exception
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Returns**</span>
+
+<span class="hljs-code">    A dictionary containing all meta.</span>
+
+
+
+<span class="hljs-section">### POST (/dids/(scope/(name/dids()</span>
+Append data identifiers to data identifiers.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: Attachment; Append DID to DID. --&gt;</span></span>
+<span class="hljs-strong">**Example request**</span>:
+
+</span></code></pre>
+<p>POST /dids/scope1/datasets1/dids HTTP/1.1
+Host: rucio.cern.ch</p>
+<p>[{&quot;scope&quot;: &quot;scope1&quot;, &quot;name&quot;: &quot;file1&quot;},
+{&quot;scope&quot;: &quot;scope1&quot;, &quot;name&quot;: &quot;file2&quot;},
+{&quot;scope&quot;: &quot;scope1&quot;, &quot;name&quot;: &quot;file3&quot;}]</p>
+<pre><code class="hljs">
+*<span class="hljs-strong">*Example response*</span><span class="hljs-strong">*:
+
+</span></code></pre>
+<p>HTTP/1.1 201 Created
+Vary: Accept</p>
+<pre><code class="hljs">
+
+<span class="markdown"><span class="hljs-bullet">* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**scope**</span> – The scope of the DID to attach to.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**name**</span> – The name of the DID to attach to.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Request JSON Object**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**attachments**</span> (<span class="hljs-emphasis">*list*</span>) – List of dicts of DIDs to attach.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">201 Created</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2</span>) – DIDs successfully attached
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – DID not found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">409 Conflict</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10</span>) – DIDs already attached
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">500 Internal Server Error</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1</span>) – Database Exception
+
+
+
+<span class="hljs-section">### GET (/dids/(scope/(name/dids()</span>
+Returns the contents of a data identifier.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: Attachement; Get DID contents. --&gt;</span></span>
+<span class="hljs-strong">**Example request**</span>:
+
+</span></code></pre>
+<p>GET /dids/scope1/dataset1?dynamic HTTP/1.1
+Host: rucio.cern.ch</p>
+<pre><code class="hljs">
+*<span class="hljs-strong">*Example response*</span><span class="hljs-strong">*:
+
+</span></code></pre>
+<p>HTTP/1.1 200 OK
+Vary: Accept
+Content-Type: application/json</p>
+<p>{&quot;scope&quot;: &quot;scope1&quot;, &quot;did_type&quot;: &quot;DATASET&quot;, &quot;name&quot;: &quot;dataset1&quot;,
+&quot;bytes&quot;: 234, &quot;length&quot;: 3, &quot;account&quot;: &quot;jdoe&quot;, &quot;open&quot;: True,
+&quot;monotonic&quot;: False, &quot;expired_at&quot;: null}</p>
+<pre><code class="hljs">
+
+<span class="markdown"><span class="hljs-bullet">* </span><span class="hljs-strong">**Query Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**dynamic**</span> – Flag to dynamically calculate size for open DIDs
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Response Headers**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">Content-Type</span>](<span class="hljs-link">https://tools.ietf.org/html/rfc7231#section-3.1.1.5</span>) – application/x-json-stream
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">200 OK</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1</span>) – DID found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – Scope not found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">406 Not Acceptable</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7</span>) – Not Acceptable
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Returns**</span>
+
+<span class="hljs-code">    Dictionary with DID metadata</span>
+
+
+
+<span class="hljs-section">### DELETE (/dids/(scope/(name/dids()</span>
+Detach data identifiers from data identifiers.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: DIDs; Detach DID from DID. --&gt;</span></span>
+<span class="hljs-bullet">
+* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**scope**</span> – Scope of the DID to detach from.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**name**</span> – Name of the DID to detach from.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Request JSON Object**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**data**</span> (<span class="hljs-emphasis">*dicts*</span>) – Must contain key ‘dids’ with list of dids to detach.
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">200 OK</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1</span>) – DIDs successfully detached
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – DID not found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">500 Internal Server Error</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1</span>) – Database Exception
+
+
+
+<span class="hljs-section">### POST (/dids/(input_scope/(input_name/(output_scope/(output_name/(nbfiles/sample()</span>
+Return the file associated to a GUID.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: Sample; Create a sample DID. --&gt;</span></span>
+HTTP Success:
+
+<span class="hljs-code">    201 Created</span>
+
+HTTP Error:
+
+<span class="hljs-code">    401 Unauthorized</span>
+<span class="hljs-code">    404 Not Found</span>
+<span class="hljs-code">    409 Conflict</span>
+<span class="hljs-code">    500 Internal Error</span>
+<span class="hljs-bullet">
+
+* </span><span class="hljs-strong">**Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**input_scope**</span> – The scope of the input DID.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**input_name**</span> – The name of the input DID.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**output_scope**</span> – The scope of the output dataset.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**output_name**</span> – The name of the output dataset.
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**nbfiles**</span> – The number of files to register in the output dataset.
+
+
+
+<span class="hljs-section">### GET (/dids/(scope/()</span>
+Return all data identifiers in the given scope.
+
+<span class="xml"><span class="hljs-comment">&lt;!-- :quickref: Scopes; List all dids for scope --&gt;</span></span>
+<span class="hljs-strong">**Example request**</span>:
+
+</span></code></pre>
+<p>GET /dids/scope1/?name=container1&amp;recursive HTTP/1.1
+Host: rucio.cern.ch</p>
+<pre><code class="hljs">
+*<span class="hljs-strong">*Example response*</span><span class="hljs-strong">*:
+
+</span></code></pre>
+<p>HTTP/1.1 200 OK
+Vary: Accept
+Content-Type: application/x-json-stream</p>
+<p>{&quot;scope&quot;: &quot;scope1&quot;, &quot;type&quot;: &quot;CONTAINER&quot;, &quot;name&quot;: &quot;container1&quot;,
+&quot;parent&quot;: null, &quot;level&quot;: 0}
+{&quot;scope&quot;: &quot;scope1&quot;, &quot;type&quot;: &quot;DATASET&quot;, &quot;name&quot;: &quot;dataset1&quot;, &quot;parent&quot;:
+{&quot;scope&quot;: &quot;scope1&quot;, &quot;name&quot;: &quot;container1&quot;}, &quot;level&quot;: 1}
+{&quot;scope&quot;: &quot;scope1&quot;, &quot;type&quot;: &quot;FILE&quot;, &quot;name&quot;: &quot;file1&quot;, &quot;parent&quot;:
+{&quot;scope&quot;: &quot;scope1&quot;, &quot;name&quot;: &quot;dataset1&quot;}, &quot;level&quot;: 2}</p>
+<pre><code class="hljs">
+
+<span class="markdown"><span class="hljs-bullet">* </span><span class="hljs-strong">**Query Parameters**</span>
+<span class="hljs-bullet">
+    
+    * </span><span class="hljs-strong">**name**</span> – specify a DID name
+<span class="hljs-bullet">
+
+    * </span><span class="hljs-strong">**recursive**</span> – flag to do a recursive search
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Response Headers**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">Content-Type</span>](<span class="hljs-link">https://tools.ietf.org/html/rfc7231#section-3.1.1.5</span>) – application/x-json-stream
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Status Codes**</span>
+<span class="hljs-bullet">
+    
+    * </span>[<span class="hljs-string">200 OK</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1</span>) – DIDs found
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">401 Unauthorized</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2</span>) – Invalid Auth Token
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">404 Not Found</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5</span>) – no DIDs found in scope
+<span class="hljs-bullet">
+
+    * </span>[<span class="hljs-string">406 Not Acceptable</span>](<span class="hljs-link">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7</span>) – Not Acceptable
+<span class="hljs-bullet">
+
+
+* </span><span class="hljs-strong">**Returns**</span>
+
+<span class="hljs-code">    Line separated dictionaries of DIDs</span>
+</span></code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

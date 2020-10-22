@@ -1,0 +1,684 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>restapi/replica · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Replica Rest API"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="restapi/replica · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="# Replica Rest API"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">restapi/replica</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="replica-rest-api"></a><a href="#replica-rest-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Replica Rest API</h1>
+<p><strong>Overview</strong></p>
+<p>| Resource</p>
+<p>| Operation</p>
+<p>| Description</p>
+<p>|
+| ------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------- |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| BadPFNs</p>
+<pre><code class="hljs">         | [POST /replicas/bad/pfns](#post--replicas-bad-pfns)
+
+                                                         | Declare bad replicas.
+
+                   |
+</code></pre>
+<p>| BadReplicasStates</p>
+<p>| <a href="#get--replicas-bad-states">GET /replicas/bad/states</a></p>
+<pre><code class="hljs">                                                        | List bad replicas.
+
+                      |
+</code></pre>
+<p>|                     | <a href="#post--replicas-bad">POST /replicas/bad</a></p>
+<pre><code class="hljs">                                                              | Declare bad replicas.
+
+                   |
+</code></pre>
+<p>| BadReplicasSummary</p>
+<p>| <a href="#get--replicas-bad-summary">GET /replicas/bad/summary</a></p>
+<pre><code class="hljs">                                                       | List bad replicas by incident.
+
+          |
+</code></pre>
+<p>| DatasetReplicas</p>
+<pre><code class="hljs"> | [GET /replicas/(scope)/(name)/datasets](#get--replicas-(scope)-(name)-datasets)
+
+                                           | List dataset replicas.
+
+                  |
+</code></pre>
+<p>| DatasetReplicasBulk</p>
+<p>| <a href="#post--replicas-datasets_bulk">POST /replicas/datasets_bulk</a></p>
+<pre><code class="hljs">                                                    | List dataset replicas (bulk).
+
+           |
+</code></pre>
+<p>| ListReplicas</p>
+<pre><code class="hljs">    | [POST /replicas/list](#post--replicas-list)
+
+                                                             | List all replicas for did.
+
+              |
+</code></pre>
+<p>| Replicas</p>
+<pre><code class="hljs">        | [GET /replicas/(scope)/(name)](#get--replicas-(scope)-(name))
+
+                                                    | List all replicas for did
+
+               |
+</code></pre>
+<p>|                     | <a href="#post--replicas-">POST /replicas/</a></p>
+<pre><code class="hljs">                                                                 | create replicas at RSE
+
+                  |
+</code></pre>
+<p>|                     | <a href="#put--replicas-">PUT /replicas/</a></p>
+<pre><code class="hljs">                                                                  | update replicas state.
+
+                  |
+</code></pre>
+<p>|                     | <a href="#delete--replicas-">DELETE /replicas/</a></p>
+<pre><code class="hljs">                                                               | Delete replica at RSE.
+
+                  |
+</code></pre>
+<p>| ReplicasDIDs</p>
+<pre><code class="hljs">    | [POST /replicas/dids](#post--replicas-dids)
+
+                                                             | List DIDs for replicas.
+
+                 |
+</code></pre>
+<p>| ReplicasRSE</p>
+<pre><code class="hljs">     | [GET /replicas/rse/(rse)](#get--replicas-rse-(rse))
+
+                                                         | List dataset replicas per RSE.
+
+          |
+</code></pre>
+<p>| SuspiciousReplicas</p>
+<p>| <a href="#post--replicas-suspicious">POST /replicas/suspicious</a></p>
+<pre><code class="hljs">                                                       | Declare suspicious replicas.
+
+            |
+</code></pre>
+<p>| Tombstone</p>
+<pre><code class="hljs">       | [POST /replicas/tombstone](#post--replicas-tombstone)
+
+                                                        | Set a tombstone on a list of replicas.
+
+  |
+</code></pre>
+<p><strong>Details</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="get-replicasbadsummary"></a><a href="#get-replicasbadsummary" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/replicas/bad/summary()</h3>
+<p>Return a summary of the bad replicas by incident.</p>
+<!-- :quickref: BadReplicasSummary; List bad replicas by incident. -->
+<ul>
+<li><strong>Query Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse_expression** – The RSE expression.
+
+
+* **from_date** – The start date.
+
+
+* **to_date** – The end date.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>List of bad replicas by incident.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-replicasbadstates"></a><a href="#get-replicasbadstates" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/replicas/bad/states()</h3>
+<p>List the bad or suspicious replicas by states.</p>
+<!-- :quickref: BadReplicasStates; List bad replicas. -->
+<ul>
+<li><strong>Query Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **state** – The state of the file (SUSPICIOUS or BAD).
+
+
+* **rse** – The RSE name.
+
+
+* **younger_than** – date in format “%Y-%m-%dT%H:%M:%S.%f” to select bad replicas younger than this date.
+
+
+* **older_than** – date in format “%Y-%m-%dT%H:%M:%S.%f” to select bad replicas older than this date.
+
+
+* **limit** – The maximum number of replicas returned.
+
+
+* **list_pfns** – Flag to include pfns.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>List of dicts of bad file replicas.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-replicasbadpfns"></a><a href="#post-replicasbadpfns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/replicas/bad/pfns()</h3>
+<p>Declare a list of bad PFNs.</p>
+<!-- :quickref: BadPFNs; Declare bad replicas. -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** (*string*) – The list of PFNs.
+
+
+* **reason** (*string*) – The reason of the loss.
+
+
+* **state** (*string*) – The state is eiher BAD, SUSPICIOUS or TEMPORARY_UNAVAILABLE.
+
+
+* **expires_at** (*string*) – The expiration date. Only apply to TEMPORARY_UNAVAILABLE.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-string
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Created.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Replica not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of not successfully declared files.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-replicasdatasets_bulk"></a><a href="#post-replicasdatasets_bulk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/replicas/datasets_bulk()</h3>
+<p>List dataset replicas for multiple DIDs.</p>
+<!-- :quickref: DatasetReplicasBulk; List dataset replicas (bulk). -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **dids** (*list*) – List of DIDs for querying the datasets.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Bad Request.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A dictionary containing all replicas information.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-replicassuspicious"></a><a href="#post-replicassuspicious" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/replicas/suspicious()</h3>
+<p>Declare a list of suspicious replicas.</p>
+<!-- :quickref: SuspiciousReplicas; Declare suspicious replicas. -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** (*string*) – The list of PFNs.
+
+
+* **reason** (*string*) – The reason of the loss.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-string
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Created.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Replica not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of not successfully declared files.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-replicastombstone"></a><a href="#post-replicastombstone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/replicas/tombstone()</h3>
+<p>Set a tombstone on a list of replicas.</p>
+<!-- :quickref: Tombstone; Set a tombstone on a list of replicas. -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **replicas** (*string*) – list fo replicas
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-string
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Created.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – ReplicaNotFound.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="post-replicaslist"></a><a href="#post-replicaslist" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/replicas/list()</h3>
+<p>List all replicas for data identifiers.</p>
+<!-- :quickref: ListReplicas; List all replicas for did. -->
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* *HTTP_ACCEPT* – application/metalink4+xml
+</code></pre>
+<ul>
+<li><strong>Query Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **schemes** – A list of schemes to filter the replicas.
+
+
+* **sort** – Requested sorting of the result, e.g., ‘geoip’, ‘closeness’, ‘dynamic’, ‘ranking’.
+</code></pre>
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **dids** (*list*) – list of DIDs.
+
+
+* **schemes** (*list*) – A list of schemes to filter the replicas.
+
+
+* **unavailable** (*bool*) – Also include unavailable replicas.
+
+
+* **all_states** (*bool*) – Return all replicas whatever state they are in. Adds an extra ‘states’ entry in the result dictionary.
+
+
+* **rse_expression** (*string*) – The RSE expression to restrict on a list of RSEs.
+
+
+* **client_location** (*dict*) – Client location dictionary for PFN modification {‘ip’, ‘fqdn’, ‘site’}.
+
+
+* **sort** (*bool*) – Requested sorting of the result, e.g., ‘geoip’, ‘closeness’, ‘dynamic’, ‘ranking’.
+
+
+* **domain** (*string*) – The network domain for the call, either None, ‘wan’ or ‘lan’. None is fallback to ‘wan’, ‘all’ is both [‘lan’,’wan’]
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+
+
+* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/metalink4+xml
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – DID not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A dictionary containing all replicas information.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A metalink description of replicas if metalink(4)+xml is specified in Accept:</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-replicasdids"></a><a href="#post-replicasdids" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/replicas/dids()</h3>
+<p>List the DIDs associated to a list of replicas.</p>
+<!-- :quickref: ReplicasDIDs; List DIDs for replicas. -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** (*string*) – The list of PFNs.
+
+
+* **rse** (*string*) – The RSE name.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-string
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dictionaries containing the mapping PFNs to DIDs.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-replicasbad"></a><a href="#post-replicasbad" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/replicas/bad()</h3>
+<p>Declare a list of bad replicas.</p>
+<!-- :quickref: BadReplicasStates; Declare bad replicas. -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** (*string*) – The list of PFNs.
+
+
+* **reason** (*string*) – The reason of the loss.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-string
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Created.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Replica not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of not successfully declared files.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-replicasscopename"></a><a href="#get-replicasscopename" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/replicas/(scope/(name)</h3>
+<p>List all replicas for data identifiers.</p>
+<!-- :quickref: Replicas; List all replicas for did -->
+HTTP Success:
+<pre><code class="hljs">200 OK
+</code></pre>
+<p>HTTP Error:</p>
+<pre><code class="hljs">401 Unauthorized
+500 InternalError
+</code></pre>
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* *HTTP_ACCEPT* – application/metalink4+xml
+</code></pre>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **scope** – data identifier scope.
+
+
+* **name** – data identifier name.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+
+
+* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/metalink4+xml
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – DID not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A dictionary containing all replicas information.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A metalink description of replicas if metalink(4)+xml is specified in Accept:</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-replicas"></a><a href="#post-replicas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/replicas/()</h3>
+<p>Create file replicas at a given RSE.</p>
+<!-- :quickref: Replicas; create replicas at RSE -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** (*string*) – The RSE name.
+
+
+* **files** (*list*) – list of dicts with ‘scope’, ‘name’, ‘bytes’, ‘meta’ and ‘adler32’.
+
+
+* **ignore_availability** (*bool*) – Flag to ignore the RSE blacklisting.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Replica Successfully created.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Invalid Path.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – RSE not found.
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – Replica already exists.
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – DID already exists.
+
+
+* [503 Service Unavailable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4) – Resource Temporary Unavailable.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="put-replicas"></a><a href="#put-replicas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PUT (/replicas/()</h3>
+<p>Update a file replicas state at a given RSE.</p>
+<!-- :quickref: Replicas; update replicas state. -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** (*string*) – The RSE name.
+
+
+* **files** (*list*) – list of dicts with ‘scope’, ‘name’ and ‘state’.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Replica successfully updated.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="delete-replicas"></a><a href="#delete-replicas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DELETE (/replicas/()</h3>
+<p>Delete file replicas at a given RSE.</p>
+<!-- :quickref: Replicas; Delete replica at RSE. -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** (*string*) – The RSE name.
+
+
+* **files** (*list*) – list of dicts with ‘scope’, ‘name’.
+
+
+* **ignore_availability** (*bool*) – Flag to ignore the RSE blacklisting.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – Replica successfully deleted.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – RSE not found.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Replica not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-replicasrserse"></a><a href="#get-replicasrserse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/replicas/rse/(rse)</h3>
+<p>List dataset replicas per RSE.</p>
+<!-- :quickref: ReplicasRSE; List dataset replicas per RSE. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A dictionary containing all replicas on the RSE.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-replicasscopenamedatasets"></a><a href="#get-replicasscopenamedatasets" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/replicas/(scope/(name/datasets()</h3>
+<p>List dataset replicas.</p>
+<!-- :quickref: DatasetReplicas; List dataset replicas. -->
+<ul>
+<li><strong>Query Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **deep** – Flag to ennable lookup at the file level.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A dictionary containing all replicas information.</p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

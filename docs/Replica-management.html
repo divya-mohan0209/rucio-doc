@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Replica management with replication rules · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Replica management is based on replication rules defined on data"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Replica management with replication rules · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="Replica management is based on replication rules defined on data"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Replica management with replication rules</h1></header><article><div><span><p>Replica management is based on replication rules defined on data
+identifiers (files, datasets, containers). A replication rule is owned
+by an account and defines the minimum number of replicas to be available
+on a list of RSEs, denoted by an <a href="rse_expressions.html">RSE Expression</a>.
+Accounts are allowed to set multiple rules<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. Rules may optionally
+have a limited lifetime and can be added, removed or modified at any
+time.</p>
+<p>An example listing of replication rules is given below:</p>
+<ul>
+<li>prod: 1x replica @ CERN, no lifetime</li>
+<li>barisits: 1x replica @ US-T2, until 2019-01-01</li>
+<li>vgaronne: 2x replica @ T1, no lifetime</li>
+</ul>
+<p>A rule engine validates the rules and creates transfer primitives to
+fulfil all rules, e.g. transfer a file from RSE A to RSE B. The rule
+engine is triggered when a new rule is defined on an existing data
+identifier, or when a file is added to a dataset with existing rules.
+The rule engine will only create the minimum set of necessary transfer
+primitives to satisfy all rules.</p>
+<p>Notifications can be provided for rules and their underlying transfer
+requests. All transfer requests are transient.</p>
+<p>The deletion service supports two different modes: greedy and
+non-greedy. Greedy means that the service tries to immediately delete
+all replicas which are not protected by a replication rule. Non-greedy
+deletion is triggered when storage policy dictates that space must be
+freed. The deletion service will look for replicas on that RSE which can
+be deleted without violating any replication rule. The deletion service
+will use a Least Recently Used (LRU) algorithm to select replicas for
+deletion. The deletion service will also immediately delete all replicas
+of any file which is declared obsolete.</p>
+<p>Some examples of replication rules are listed
+<a href="replication_rules_examples.html">here</a>.</p>
+<p><strong>Footnotes</strong></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1"  class="footnote-item"><p>The system may reject rules if these violate other policies, e.g.,
+only specific accounts are allowed to request replication rules for
+tape systems. <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

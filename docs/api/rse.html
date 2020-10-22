@@ -1,0 +1,1058 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>api/rse · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# RSE Classes"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="api/rse · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="# RSE Classes"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">api/rse</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="rse-classes"></a><a href="#rse-classes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RSE Classes</h1>
+<h2><a class="anchor" aria-hidden="true" id="client"></a><a href="#client" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Client</h2>
+<h3><a class="anchor" aria-hidden="true" id="class-rucioclientrseclientrseclientrucio_hostnone-auth_hostnone-accountnone-ca_certnone-auth_typenone-credsnone-timeout600-user_agentrucio-clients-vonone"></a><a href="#class-rucioclientrseclientrseclientrucio_hostnone-auth_hostnone-accountnone-ca_certnone-auth_typenone-credsnone-timeout600-user_agentrucio-clients-vonone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class rucio.client.rseclient.RSEClient(rucio_host=None, auth_host=None, account=None, ca_cert=None, auth_type=None, creds=None, timeout=600, user_agent='rucio-clients', vo=None)</h3>
+<p>Bases: <code>rucio.client.baseclient.BaseClient</code></p>
+<p>RSE client class for working with rucio RSEs</p>
+<h4><a class="anchor" aria-hidden="true" id="rse_baseurl--rses"></a><a href="#rse_baseurl--rses" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RSE_BASEURL( = 'rses')</h4>
+<h4><a class="anchor" aria-hidden="true" id="add_distancesource-destination-parameters"></a><a href="#add_distancesource-destination-parameters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_distance(source, destination, parameters)</h4>
+<p>Add a src-dest distance.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **source** – The source.
+
+
+* **destination** – The destination.
+
+
+* **parameters** – A dictionnary with property.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="add_protocolrse-params"></a><a href="#add_protocolrse-params" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_protocol(rse, params)</h4>
+<p>Sends the request to create a new protocol for the given RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the name of the  rse.
+
+
+* **scheme** – identifier of this protocol
+
+
+* **params** – Attributes of the protocol. Supported are:
+hostname:       hostname for this protocol (default = localhost)
+port:           port for this protocol (default = 0)
+prefix:         string used as a prfeix for this protocol when generating the PFN (default = None)
+impl:           qualified name of the implementation class for this protocol (mandatory)
+read:           integer representing the priority of this procotol for read operations (default = -1)
+write:          integer representing the priority of this procotol for write operations (default = -1)
+delete:         integer representing the priority of this procotol for delete operations (default = -1)
+extended_attributes:  miscellaneous protocol specific information e.g. spacetoken for SRM (default = None)
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if protocol was created successfully else False.</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **Duplicate** – if protocol with same hostname, port and protocol identifier
+already exists for the given RSE.
+
+
+* **RSENotFound** – if the RSE doesn’t exist.
+
+
+* **KeyNotFound** – if params is missing manadtory attributes to create the
+protocol.
+
+
+* **AccessDenied** – if not authorized.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="add_qos_policyrse-qos_policy"></a><a href="#add_qos_policyrse-qos_policy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_qos_policy(rse, qos_policy)</h4>
+<p>Add a QoS policy from an RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse_id** – The id of the RSE.
+
+
+* **qos_policy** – The QoS policy to add.
+
+
+* **session** – The database session in use.
+</code></pre>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>Duplicate</strong> – If the QoS policy already exists.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if successful, except otherwise.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="add_rserse-kwargs"></a><a href="#add_rserse-kwargs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_rse(rse, **kwargs)</h4>
+<p>Sends the request to create a new RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the name of the rse.
+
+
+* **deterministic** – Boolean to know if the pfn is generated deterministically.
+
+
+* **volatile** – Boolean for RSE cache.
+
+
+* **city** – City for the RSE.
+
+
+* **region_code** – The region code for the RSE.
+
+
+* **country_name** – The country.
+
+
+* **continent** – The continent.
+
+
+* **time_zone** – Timezone.
+
+
+* **staging_area** – Staging area.
+
+
+* **ISP** – Internet service provider.
+
+
+* **rse_type** – RSE type.
+
+
+* **latitude** – Latitude coordinate of RSE.
+
+
+* **longitude** – Longitude coordinate of RSE.
+
+
+* **ASN** – Access service network.
+
+
+* **availability** – Availability.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if location was created successfully else False.</p></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>Duplicate</strong> – if rse already exists.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="add_rse_attributerse-key-value"></a><a href="#add_rse_attributerse-key-value" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_rse_attribute(rse, key, value)</h4>
+<p>Sends the request to add a RSE attribute.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the name of the rse.
+
+
+* **key** – the attribute key.
+
+
+* **value** – the attribute value.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if RSE attribute was created successfully else False.</p></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>Duplicate</strong> – if RSE attribute already exists.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="delete_protocolsrse-scheme-hostnamenone-portnone"></a><a href="#delete_protocolsrse-scheme-hostnamenone-portnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete_protocols(rse, scheme, hostname=None, port=None)</h4>
+<p>Deletes matching protocols from RSE. Protocols using the same identifier can be
+distinguished by hostname and port.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **scheme** – identifier of the protocol.
+
+
+* **hostname** – hostname of the protocol.
+
+
+* **port** – port of the protocol.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if success.</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSEProtocolNotSupported** – if no matching protocol entry could be found.
+
+
+* **RSENotFound** – if the RSE doesn’t exist.
+
+
+* **AccessDenied** – if not authorized.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="delete_qos_policyrse-qos_policy"></a><a href="#delete_qos_policyrse-qos_policy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete_qos_policy(rse, qos_policy)</h4>
+<p>Delete a QoS policy from an RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse_id** – The id of the RSE.
+
+
+* **qos_policy** – The QoS policy to delete.
+
+
+* **session** – The database session in use.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if successful, silent failure if QoS policy does not exist.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="delete_rserse"></a><a href="#delete_rserse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete_rse(rse)</h4>
+<p>Sends the request to delete a rse.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>rse</strong> – the name of the rse.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if location was created successfully else False.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="delete_rse_attributerse-key"></a><a href="#delete_rse_attributerse-key" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete_rse_attribute(rse, key)</h4>
+<p>Sends the request to delete a RSE attribute.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **key** – the attribute key.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if RSE attribute was deleted successfully else False.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="get_distancesource-destination"></a><a href="#get_distancesource-destination" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_distance(source, destination)</h4>
+<p>Get distances between rses.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **source** – The source RSE.
+
+
+* **destination** – The destination RSE.
+</code></pre>
+<ul>
+<li><p><strong>Returns distance</strong></p>
+<p>List of dictionaries.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="get_protocolsrse-protocol_domainall-operationnone-defaultfalse-schemenone"></a><a href="#get_protocolsrse-protocol_domainall-operationnone-defaultfalse-schemenone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_protocols(rse, protocol_domain='ALL', operation=None, default=False, scheme=None)</h4>
+<p>Returns protocol information. Parameter comibantions are:
+(operation OR default) XOR protocol.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **protocol_domain** – The scope of the protocol. Supported are ‘LAN’, ‘WAN’, and ‘ALL’ (as default).
+
+
+* **operation** – The name of the requested operation (read, write, or delete).
+If None, all operations are queried.
+
+
+* **default** – Indicates if only the default operations should be returned.
+
+
+* **scheme** – The identifier of the requested protocol.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list with details about each matching protocol.</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSENotFound** – if the RSE doesn’t exist.
+
+
+* **RSEProtocolNotSupported** – if no matching protocol entry could be found.
+
+
+* **RSEOperationNotSupported** – if no matching protocol entry for the requested
+operation could be found.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="get_rserse"></a><a href="#get_rserse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_rse(rse)</h4>
+<p>Returns details about the referred RSE.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>rse</strong> – Name of the referred RSE</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A dict containing all attributes of the referred RSE</p></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>RSENotFound</strong> – if the referred RSE was not found in the database</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="get_rse_limitsrse"></a><a href="#get_rse_limitsrse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_rse_limits(rse)</h4>
+<p>Get RSE limits.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>rse</strong> – The RSE name.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if successful, otherwise false.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="get_rse_usagerse-filtersnone"></a><a href="#get_rse_usagerse-filtersnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_rse_usage(rse, filters=None)</h4>
+<p>Get RSE usage information.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **filters** – dictionary of attributes by which the results should be filtered
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if successful, otherwise false.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="lfns2pfnsrse-lfns-protocol_domainall-operationnone-schemenone"></a><a href="#lfns2pfnsrse-lfns-protocol_domainall-operationnone-schemenone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>lfns2pfns(rse, lfns, protocol_domain='ALL', operation=None, scheme=None)</h4>
+<p>Returns PFNs that should be used at a RSE, corresponding to requested LFNs.
+The PFNs are generated for the RSE <em>regardless</em> of whether a replica exists for the LFN.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name
+
+
+* **lfns** – A list of LFN strings to translate to PFNs.
+
+
+* **protocol_domain** – The scope of the protocol. Supported are ‘LAN’, ‘WAN’, and ‘ALL’ (as default).
+
+
+* **operation** – The name of the requested operation (read, write, or delete).
+If None, all operations are queried.
+
+
+* **scheme** – The identifier of the requested protocol (gsiftp, https, davs, etc).
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A dictionary of LFN / PFN pairs.</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSENotFound** – if the RSE doesn’t exist.
+
+
+* **RSEProtocolNotSupported** – if no matching protocol entry could be found.
+
+
+* **RSEOperationNotSupported** – if no matching protocol entry for the requested
+operation could be found.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="list_qos_policiesrse"></a><a href="#list_qos_policiesrse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_qos_policies(rse)</h4>
+<p>List all QoS policies of an RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse_id** – The id of the RSE.
+
+
+* **session** – The database session in use.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>List containing all QoS policies.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_rse_attributesrse"></a><a href="#list_rse_attributesrse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_rse_attributes(rse)</h4>
+<p>Sends the request to get RSE attributes.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>rse</strong> – The RSE name.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A <code>dict</code> with the RSE attribute name/value pairs.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_rse_usage_historyrse-filtersnone"></a><a href="#list_rse_usage_historyrse-filtersnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_rse_usage_history(rse, filters=None)</h4>
+<p>List RSE usage history information.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – The RSE name.
+
+
+* **filters** – dictionary of attributes by which the results should be filtered.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>list of dictionnaries.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_rsesrse_expressionnone"></a><a href="#list_rsesrse_expressionnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_rses(rse_expression=None)</h4>
+<p>Sends the request to list all rucio locations(RSEs).</p>
+<ul>
+<li><p><strong>Rse_expression</strong></p>
+<p>RSE Expression to use as filter.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a list containing the names of all rucio locations.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="set_rse_limitsrse-name-value"></a><a href="#set_rse_limitsrse-name-value" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>set_rse_limits(rse, name, value)</h4>
+<p>Set RSE limit information.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – The RSE name.
+
+
+* **name** – The name of the limit.
+
+
+* **value** – The feature value. Set to -1 to remove the limit.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if successful, otherwise false.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="set_rse_usagerse-source-used-free"></a><a href="#set_rse_usagerse-source-used-free" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>set_rse_usage(rse, source, used, free)</h4>
+<p>Set RSE usage information.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **source** – the information source, e.g. srm.
+
+
+* **used** – the used space in bytes.
+
+
+* **free** – the free in bytes.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if successful, otherwise false.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="swap_protocolsrse-domain-operation-scheme_a-scheme_b"></a><a href="#swap_protocolsrse-domain-operation-scheme_a-scheme_b" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>swap_protocols(rse, domain, operation, scheme_a, scheme_b)</h4>
+<p>Swaps the priorities of the provided operation.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **domain** – the domain in which priorities should be swapped i.e. wan or lan.
+
+
+* **operation** – the operation that should be swapped i.e. read, write, or delete.
+
+
+* **scheme_a** – the scheme of one of the two protocols to be swapped, e.g. srm.
+
+
+* **scheme_b** – the scheme of the other of the two protocols to be swapped, e.g. http.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if success.</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSEProtocolNotSupported** – if no matching protocol entry could be found.
+
+
+* **RSENotFound** – if the RSE doesn’t exist.
+
+
+* **KeyNotFound** – if invalid data was provided for update.
+
+
+* **AccessDenied** – if not authorized.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="update_distancesource-destination-parameters"></a><a href="#update_distancesource-destination-parameters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update_distance(source, destination, parameters)</h4>
+<p>Update distances with the given RSE ids.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **source** – The source.
+
+
+* **destination** – The destination.
+
+
+* **parameters** – A dictionnary with property.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="update_protocolsrse-scheme-data-hostnamenone-portnone"></a><a href="#update_protocolsrse-scheme-data-hostnamenone-portnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update_protocols(rse, scheme, data, hostname=None, port=None)</h4>
+<p>Updates matching protocols from RSE. Protocol using the same identifier can be
+distinguished by hostname and port.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **scheme** – identifier of the protocol.
+
+
+* **data** – A dict providing the new values of the protocol attibutes.
+Keys must match column names in database.
+
+
+* **hostname** – hostname of the protocol.
+
+
+* **port** – port of the protocol.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if success.</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSEProtocolNotSupported** – if no matching protocol entry could be found.
+
+
+* **RSENotFound** – if the RSE doesn’t exist.
+
+
+* **KeyNotFound** – if invalid data was provided for update.
+
+
+* **AccessDenied** – if not authorized.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="update_rserse-parameters"></a><a href="#update_rserse-parameters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update_rse(rse, parameters)</h4>
+<p>Update RSE properties like availability or name.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the name of the new rse.
+
+
+* **parameters** – A dictionnary with property (name, read, write, delete as keys).
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="manager"></a><a href="#manager" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Manager</h2>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagercreate_protocolrse_settings-operation-schemenone-domainwan-auth_tokennone-loggerlogger-ruciorsersemanager-warning"></a><a href="#ruciorsersemanagercreate_protocolrse_settings-operation-schemenone-domainwan-auth_tokennone-loggerlogger-ruciorsersemanager-warning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.create_protocol(rse_settings, operation, scheme=None, domain='wan', auth_token=None, logger=&lt;Logger rucio.rse.rsemanager (WARNING)&gt;)</h3>
+<p>Instanciates the protocol defined for the given operation.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse_settings** – RSE attributes
+
+
+* **operation** – Intended operation for this protocol
+
+
+* **scheme** – Optional filter if no specific protocol is defined in rse_setting for the provided operation
+
+
+* **domain** – Optional specification of the domain
+
+
+* **auth_token** – Optionally passing JSON Web Token (OIDC) string for authentication
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>An instance of the requested protocol</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerdeleterse_settings-lfns-domainwan-auth_tokennone"></a><a href="#ruciorsersemanagerdeleterse_settings-lfns-domainwan-auth_tokennone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.delete(rse_settings, lfns, domain='wan', auth_token=None)</h3>
+<p>Delete a file from the connected storage.
+Providing a list indicates the bulk mode.</p>
+<ul>
+<li><p><strong>Rse_settings</strong></p>
+<p>RSE attributes</p></li>
+</ul>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **lfns** – a single dict or a list with dicts containing ‘scope’ and ‘name’. E.g. [{‘name’: ‘1_rse_remote_delete.raw’, ‘scope’: ‘user.jdoe’}, {‘name’: ‘2_rse_remote_delete.raw’, ‘scope’: ‘user.jdoe’}]
+
+
+* **domain** – The network domain, either ‘wan’ (default) or ‘lan’
+
+
+* **auth_token** – Optionally passing JSON Web Token (OIDC) string for authentication
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True/False for a single file or a dict object with ‘scope:name’ as keys and True or the exception as value for each file in bulk mode</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSENotConnected** – no connection to a specific storage has been established
+
+
+* **SourceNotFound** – remote source file can not be found on storage
+
+
+* **ServiceUnavailable** – for any other reason
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerexistsrse_settings-files-domainwan-auth_tokennone-loggerlogger-ruciorsersemanager-warning"></a><a href="#ruciorsersemanagerexistsrse_settings-files-domainwan-auth_tokennone-loggerlogger-ruciorsersemanager-warning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.exists(rse_settings, files, domain='wan', auth_token=None, logger=&lt;Logger rucio.rse.rsemanager (WARNING)&gt;)</h3>
+<p>Checks if a file is present at the connected storage.
+Providing a list indicates the bulk mode.</p>
+<ul>
+<li><p><strong>Rse_settings</strong></p>
+<p>RSE attributes</p></li>
+</ul>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **files** – a single dict or a list with dicts containing ‘scope’ and ‘name’
+if LFNs are used and only ‘name’ if PFNs are used.
+E.g. {‘name’: ‘2_rse_remote_get.raw’, ‘scope’: ‘user.jdoe’}, {‘name’: ‘user/jdoe/5a/98/3_rse_remote_get.raw’}
+
+
+* **domain** – The network domain, either ‘wan’ (default) or ‘lan’
+
+
+* **auth_token** – Optionally passing JSON Web Token (OIDC) string for authentication
+
+
+* **logger** – An optional logging.Logger object
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True/False for a single file or a dict object with ‘scope:name’ for LFNs or ‘name’ for PFNs as keys and True or the exception as value for each file in bulk mode</p></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>RSENotConnected</strong> – no connection to a specific storage has been established</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerfind_matching_schemerse_settings_dest-rse_settings_src-operation_src-operation_dest-domainwan-schemenone"></a><a href="#ruciorsersemanagerfind_matching_schemerse_settings_dest-rse_settings_src-operation_src-operation_dest-domainwan-schemenone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.find_matching_scheme(rse_settings_dest, rse_settings_src, operation_src, operation_dest, domain='wan', scheme=None)</h3>
+<p>Find the best matching scheme between two RSEs</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse_settings_dest** – RSE settings for the destination RSE.
+
+
+* **rse_settings_src** – RSE settings for the src RSE.
+
+
+* **operation_src** – Source Operation such as read, write.
+
+
+* **operation_dest** – Dest Operation such as read, write.
+
+
+* **domain** – Domain such as lan, wan.
+
+
+* **scheme** – List of supported schemes.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Tuple of matching schemes (dest_scheme, src_scheme, dest_scheme_priority, src_scheme_priority).</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerget_protocols_orderedrse_settings-operation-schemenone-domainwan"></a><a href="#ruciorsersemanagerget_protocols_orderedrse_settings-operation-schemenone-domainwan" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.get_protocols_ordered(rse_settings, operation, scheme=None, domain='wan')</h3>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerget_rse_inforsenone-vodef-rse_idnone-sessionnone"></a><a href="#ruciorsersemanagerget_rse_inforsenone-vodef-rse_idnone-sessionnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.get_rse_info(rse=None, vo='def', rse_id=None, session=None)</h3>
+<p>Returns all protocol related RSE attributes.
+Call with either rse and vo, or (in server mode) rse_id</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – Name of the requested RSE
+
+
+* **vo** – The VO for the RSE.
+
+
+* **rse_id** – The id of the rse (use in server mode to avoid db calls)
+
+
+* **session** – The eventual database session.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a dict object with the following attributes:
+id                …     an internal identifier
+rse               …     the name of the RSE as string
+type              …     the storage type odf the RSE e.g. DISK
+volatile          …     boolean indictaing if the RSE is volatile
+verify_checksum   …     boolean indicating whether RSE supports requests for checksums
+deteministic      …     boolean indicating of the nameing of the files follows the defined determinism
+domain            …     indictaing the domain that should be assumed for transfers. Values are ‘ALL’, ‘LAN’, or ‘WAN’
+protocols         …     all supported protocol in form of a list of dict objects with the followig structure</p>
+<ul>
+<li>scheme              …     protocol scheme e.g. http, srm, …</li>
+<li>hostname            …     hostname of the site</li>
+<li>prefix              …     path to the folder where the files are stored</li>
+<li>port                …     port used for this protocol</li>
+<li>impl                …     naming the python class of the protocol implementation</li>
+<li>extended_attributes …     additional information for the protocol</li>
+<li>domains             …     a dict naming each domain and the priority of the protocol for each operation (lower is better, zero is not upported)</li>
+</ul></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>RSENotFound</strong> – if the provided RSE coud not be found in the database.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerget_space_usagerse_settings-schemenone-domainwan-auth_tokennone"></a><a href="#ruciorsersemanagerget_space_usagerse_settings-schemenone-domainwan-auth_tokennone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.get_space_usage(rse_settings, scheme=None, domain='wan', auth_token=None)</h3>
+<p>Get RSE space usage information.</p>
+<ul>
+<li><p><strong>Rse_settings</strong></p>
+<p>RSE attributes</p></li>
+</ul>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **scheme** – optional filter to select which protocol to be used.
+
+
+* **domain** – The network domain, either ‘wan’ (default) or ‘lan’
+
+
+* **auth_token** – Optionally passing JSON Web Token (OIDC) string for authentication
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a list with dict containing ‘totalsize’ and ‘unusedsize’</p></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>ServiceUnavailable</strong> – if some generic error occured in the library.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerlfns2pfnsrse_settings-lfns-operationwrite-schemenone-domainwan-auth_tokennone"></a><a href="#ruciorsersemanagerlfns2pfnsrse_settings-lfns-operationwrite-schemenone-domainwan-auth_tokennone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.lfns2pfns(rse_settings, lfns, operation='write', scheme=None, domain='wan', auth_token=None)</h3>
+<p>Convert the lfn to a pfn</p>
+<ul>
+<li><p><strong>Rse_settings</strong></p>
+<p>RSE attributes</p></li>
+</ul>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **lfns** – logical file names as a dict containing ‘scope’ and ‘name’ as keys. For bulk a list of dicts can be provided
+
+
+* **operation** – Intended operation for this protocol
+
+
+* **scheme** – Optional filter if no specific protocol is defined in rse_setting for the provided operation
+
+
+* **domain** – Optional specification of the domain
+
+
+* **auth_token** – Optionally passing JSON Web Token (OIDC) string for authentication
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a dict with scope:name as key and the PFN as value</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerparse_pfnsrse_settings-pfns-operationread-domainwan-auth_tokennone"></a><a href="#ruciorsersemanagerparse_pfnsrse_settings-pfns-operationread-domainwan-auth_tokennone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.parse_pfns(rse_settings, pfns, operation='read', domain='wan', auth_token=None)</h3>
+<p>Checks if a PFN is feasible for a given RSE. If so it splits the pfn in its various components.</p>
+<ul>
+<li><p><strong>Rse_settings</strong></p>
+<p>RSE attributes</p></li>
+</ul>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** – list of PFNs
+
+
+* **operation** – Intended operation for this protocol
+
+
+* **domain** – Optional specification of the domain
+
+
+* **auth_token** – Optionally passing JSON Web Token (OIDC) string for authentication
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A dict with the parts known by the selected protocol e.g. scheme, hostname, prefix, path, name</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSEFileNameNotSupported** – if provided PFN is not supported by the RSE/protocol
+
+
+* **RSENotFound** – if the referred storage is not found i the repository (rse_id)
+
+
+* **InvalidObject** – If the properties parameter doesn’t include scheme, hostname, and port as keys
+
+
+* **RSEOperationNotSupported** – If no matching protocol was found for the requested operation
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerrenamerse_settings-files-domainwan-auth_tokennone"></a><a href="#ruciorsersemanagerrenamerse_settings-files-domainwan-auth_tokennone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.rename(rse_settings, files, domain='wan', auth_token=None)</h3>
+<p>Rename files stored on the connected storage.
+Providing a list indicates the bulk mode.</p>
+<ul>
+<li><p><strong>Rse_settings</strong></p>
+<p>RSE attributes</p></li>
+</ul>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **files** – a single dict or a list with dicts containing ‘scope’, ‘name’, ‘new_scope’ and ‘new_name’
+if LFNs are used or only ‘name’ and ‘new_name’ if PFNs are used.
+If ‘new_scope’ or ‘new_name’ are not provided, the current one is used.
+Examples:
+[
+{‘name’: ‘3_rse_remote_rename.raw’, ‘scope’: ‘user.jdoe’, ‘new_name’: ‘3_rse_new.raw’, ‘new_scope’: ‘user.jdoe’},
+{‘name’: ‘user/jdoe/d9/cb/9_rse_remote_rename.raw’, ‘new_name’: ‘user/jdoe/c6/4a/9_rse_new.raw’}
+]
+
+
+* **domain** – The network domain, either ‘wan’ (default) or ‘lan’
+
+
+* **auth_token** – Optionally passing JSON Web Token (OIDC) string for authentication
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True/False for a single file or a dict object with LFN (key) and True/False (value) in bulk mode</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSENotConnected** – no connection to a specific storage has been established
+
+
+* **SourceNotFound** – remote source file can not be found on storage
+
+
+* **DestinationNotAccessible** – remote destination directory is not accessible
+
+
+* **ServiceUnavailable** – for any other reason
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanagerselect_protocolrse_settings-operation-schemenone-domainwan"></a><a href="#ruciorsersemanagerselect_protocolrse_settings-operation-schemenone-domainwan" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.select_protocol(rse_settings, operation, scheme=None, domain='wan')</h3>
+<h3><a class="anchor" aria-hidden="true" id="ruciorsersemanageruploadrse_settings-lfns-domainwan-source_dirnone-force_pfnnone-force_schemenone-transfer_timeoutnone-delete_existingfalse-sign_servicenone-auth_tokennone-loggerlogger-ruciorsersemanager-warning"></a><a href="#ruciorsersemanageruploadrse_settings-lfns-domainwan-source_dirnone-force_pfnnone-force_schemenone-transfer_timeoutnone-delete_existingfalse-sign_servicenone-auth_tokennone-loggerlogger-ruciorsersemanager-warning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rucio.rse.rsemanager.upload(rse_settings, lfns, domain='wan', source_dir=None, force_pfn=None, force_scheme=None, transfer_timeout=None, delete_existing=False, sign_service=None, auth_token=None, logger=&lt;Logger rucio.rse.rsemanager (WARNING)&gt;)</h3>
+<p>Uploads a file to the connected storage.
+Providing a list indicates the bulk mode.</p>
+<ul>
+<li><p><strong>Rse_settings</strong></p>
+<p>RSE attributes</p></li>
+</ul>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **lfns** – a single dict or a list with dicts containing ‘scope’ and ‘name’.
+Examples:
+[
+{‘name’: ‘1_rse_local_put.raw’, ‘scope’: ‘user.jdoe’, ‘filesize’: 42, ‘adler32’: ‘87HS3J968JSNWID’},
+{‘name’: ‘2_rse_local_put.raw’, ‘scope’: ‘user.jdoe’, ‘filesize’: 4711, ‘adler32’: ‘RSSMICETHMISBA837464F’}
+]
+If the ‘filename’ key is present, it will be used by Rucio as the actual name of the file on disk (separate from the Rucio ‘name’).
+
+
+* **domain** – The network domain, either ‘wan’ (default) or ‘lan’
+
+
+* **source_dir** – path to the local directory including the source files
+
+
+* **force_pfn** – use the given PFN – can lead to dark data, use sparingly
+
+
+* **force_scheme** – use the given protocol scheme, overriding the protocol priority in the RSE description
+
+
+* **transfer_timeout** – set this timeout (in seconds) for the transfers, for protocols that support it
+
+
+* **sign_service** – use the given service (e.g. gcs, s3, swift) to sign the URL
+
+
+* **auth_token** – Optionally passing JSON Web Token (OIDC) string for authentication
+
+
+* **logger** – An optional logging.Logger object
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True/False for a single file or a dict object with ‘scope:name’ as keys and True or the exception as value for each file in bulk mode</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **RSENotConnected** – no connection to a specific storage has been established
+
+
+* **SourceNotFound** – local source file can not be found
+
+
+* **DestinationNotAccessible** – remote destination directory is not accessible
+
+
+* **ServiceUnavailable** – for any other reason
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="storage"></a><a href="#storage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Storage</h2>
+<h3><a class="anchor" aria-hidden="true" id="class-ruciorseprotocolsprotocolrseprotocolprotocol_attr-rse_settings-loggernone"></a><a href="#class-ruciorseprotocolsprotocolrseprotocolprotocol_attr-rse_settings-loggernone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class rucio.rse.protocols.protocol.RSEProtocol(protocol_attr, rse_settings, logger=None)</h3>
+<p>Bases: <code>object</code></p>
+<p>This class is virtual and acts as a base to inherit new protocols from. It further provides some common functionality which applies for the amjority of the protocols.</p>
+<h4><a class="anchor" aria-hidden="true" id="close"></a><a href="#close" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>close()</h4>
+<p>Closes the connection to RSE.</p>
+<h4><a class="anchor" aria-hidden="true" id="connect"></a><a href="#connect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>connect()</h4>
+<p>Establishes the actual connection to the referred RSE.</p>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>RSEAccessDenied</strong> – if no connection could be established.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="deletepath"></a><a href="#deletepath" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete(path)</h4>
+<p>Deletes a file from the connected RSE.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>path</strong> – path to the to be deleted file</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **ServiceUnavailable** – if some generic error occured in the library.
+
+
+* **SourceNotFound** – if the source file was not found on the referred storage.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="existspath"></a><a href="#existspath" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>exists(path)</h4>
+<p>Checks if the requested file is known by the referred RSE.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>path</strong> – Physical file name</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if the file exists, False if it doesn’t</p></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>SourceNotFound</strong> – if the source file was not found on the referred storage.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="getpath-dest-transfer_timeoutnone"></a><a href="#getpath-dest-transfer_timeoutnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get(path, dest, transfer_timeout=None)</h4>
+<p>Provides access to files stored inside connected the RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **path** – Physical file name of requested file
+
+
+* **dest** – Name and path of the files when stored at the client
+
+
+* **transfer_timeout** – Transfer timeout (in seconds)
+</code></pre>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **DestinationNotAccessible** – if the destination storage was not accessible.
+
+
+* **ServiceUnavailable** – if some generic error occured in the library.
+
+
+* **SourceNotFound** – if the source file was not found on the referred storage.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="get_space_usage"></a><a href="#get_space_usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_space_usage()</h4>
+<p>Get RSE space usage information.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a list with dict containing ‘totalsize’ and ‘unusedsize’</p></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>ServiceUnavailable</strong> – if some generic error occured in the library.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="lfns2pfnslfns"></a><a href="#lfns2pfnslfns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>lfns2pfns(lfns)</h4>
+<p>Retruns a fully qualified PFN for the file referred by path.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>path</strong> – The path to the file.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Fully qualified PFN.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="parse_pfnspfns"></a><a href="#parse_pfnspfns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>parse_pfns(pfns)</h4>
+<p>Splits the given PFN into the parts known by the protocol. It is also checked if the provided protocol supportes the given PFNs.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>pfns</strong> – a list of a fully qualified PFNs</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>dic with PFN as key and a dict with path and name as value</p></li>
+</ul>
+<ul>
+<li><p><strong>Raises</strong></p>
+<p><strong>RSEFileNameNotSupported</strong> – if the provided PFN doesn’t match with the protocol settings</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="putsource-target-source_dir-transfer_timeoutnone"></a><a href="#putsource-target-source_dir-transfer_timeoutnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>put(source, target, source_dir, transfer_timeout=None)</h4>
+<p>Allows to store files inside the referred RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **source** – path to the source file on the client file system
+
+
+* **target** – path to the destination file on the storage
+
+
+* **source_dir** – Path where the to be transferred files are stored in the local file system
+
+
+* **transfer_timeout** – Transfer timeout (in seconds)
+</code></pre>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **DestinationNotAccessible** – if the destination storage was not accessible.
+
+
+* **ServiceUnavailable** – if some generic error occured in the library.
+
+
+* **SourceNotFound** – if the source file was not found on the referred storage.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="renamepath-new_path"></a><a href="#renamepath-new_path" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rename(path, new_path)</h4>
+<p>Allows to rename a file stored inside the connected RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **path** – path to the current file on the storage
+
+
+* **new_path** – path to the new file on the storage
+</code></pre>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **DestinationNotAccessible** – if the destination storage was not accessible.
+
+
+* **ServiceUnavailable** – if some generic error occured in the library.
+
+
+* **SourceNotFound** – if the source file was not found on the referred storage.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="statpath"></a><a href="#statpath" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>stat(path)</h4>
+<p>Returns the stats of a file.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>path</strong> – path to file</p></li>
+</ul>
+<ul>
+<li><strong>Raises</strong></li>
+</ul>
+<pre><code class="hljs">* **ServiceUnavailable** – if some generic error occured in the library.
+
+
+* **SourceNotFound** – if the source file was not found on the referred storage.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a dict with two keys, filesize and adler32 of the file provided in path.</p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#client">Client</a><ul class="toc-headings"><li><a href="#class-rucioclientrseclientrseclientrucio_hostnone-auth_hostnone-accountnone-ca_certnone-auth_typenone-credsnone-timeout600-user_agentrucio-clients-vonone">class rucio.client.rseclient.RSEClient(rucio_host=None, auth_host=None, account=None, ca_cert=None, auth_type=None, creds=None, timeout=600, user_agent='rucio-clients', vo=None)</a></li></ul></li><li><a href="#manager">Manager</a><ul class="toc-headings"><li><a href="#ruciorsersemanagercreate_protocolrse_settings-operation-schemenone-domainwan-auth_tokennone-loggerlogger-ruciorsersemanager-warning">rucio.rse.rsemanager.create_protocol(rse_settings, operation, scheme=None, domain='wan', auth_token=None, logger=&lt;Logger rucio.rse.rsemanager (WARNING)&gt;)</a></li><li><a href="#ruciorsersemanagerdeleterse_settings-lfns-domainwan-auth_tokennone">rucio.rse.rsemanager.delete(rse_settings, lfns, domain='wan', auth_token=None)</a></li><li><a href="#ruciorsersemanagerexistsrse_settings-files-domainwan-auth_tokennone-loggerlogger-ruciorsersemanager-warning">rucio.rse.rsemanager.exists(rse_settings, files, domain='wan', auth_token=None, logger=&lt;Logger rucio.rse.rsemanager (WARNING)&gt;)</a></li><li><a href="#ruciorsersemanagerfind_matching_schemerse_settings_dest-rse_settings_src-operation_src-operation_dest-domainwan-schemenone">rucio.rse.rsemanager.find_matching_scheme(rse_settings_dest, rse_settings_src, operation_src, operation_dest, domain='wan', scheme=None)</a></li><li><a href="#ruciorsersemanagerget_protocols_orderedrse_settings-operation-schemenone-domainwan">rucio.rse.rsemanager.get_protocols_ordered(rse_settings, operation, scheme=None, domain='wan')</a></li><li><a href="#ruciorsersemanagerget_rse_inforsenone-vodef-rse_idnone-sessionnone">rucio.rse.rsemanager.get_rse_info(rse=None, vo='def', rse_id=None, session=None)</a></li><li><a href="#ruciorsersemanagerget_space_usagerse_settings-schemenone-domainwan-auth_tokennone">rucio.rse.rsemanager.get_space_usage(rse_settings, scheme=None, domain='wan', auth_token=None)</a></li><li><a href="#ruciorsersemanagerlfns2pfnsrse_settings-lfns-operationwrite-schemenone-domainwan-auth_tokennone">rucio.rse.rsemanager.lfns2pfns(rse_settings, lfns, operation='write', scheme=None, domain='wan', auth_token=None)</a></li><li><a href="#ruciorsersemanagerparse_pfnsrse_settings-pfns-operationread-domainwan-auth_tokennone">rucio.rse.rsemanager.parse_pfns(rse_settings, pfns, operation='read', domain='wan', auth_token=None)</a></li><li><a href="#ruciorsersemanagerrenamerse_settings-files-domainwan-auth_tokennone">rucio.rse.rsemanager.rename(rse_settings, files, domain='wan', auth_token=None)</a></li><li><a href="#ruciorsersemanagerselect_protocolrse_settings-operation-schemenone-domainwan">rucio.rse.rsemanager.select_protocol(rse_settings, operation, scheme=None, domain='wan')</a></li><li><a href="#ruciorsersemanageruploadrse_settings-lfns-domainwan-source_dirnone-force_pfnnone-force_schemenone-transfer_timeoutnone-delete_existingfalse-sign_servicenone-auth_tokennone-loggerlogger-ruciorsersemanager-warning">rucio.rse.rsemanager.upload(rse_settings, lfns, domain='wan', source_dir=None, force_pfn=None, force_scheme=None, transfer_timeout=None, delete_existing=False, sign_service=None, auth_token=None, logger=&lt;Logger rucio.rse.rsemanager (WARNING)&gt;)</a></li></ul></li><li><a href="#storage">Storage</a><ul class="toc-headings"><li><a href="#class-ruciorseprotocolsprotocolrseprotocolprotocol_attr-rse_settings-loggernone">class rucio.rse.protocols.protocol.RSEProtocol(protocol_attr, rse_settings, logger=None)</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>restapi/lifetime_exception · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Lifetime Exception Rest API"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="restapi/lifetime_exception · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="# Lifetime Exception Rest API"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">restapi/lifetime_exception</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="lifetime-exception-rest-api"></a><a href="#lifetime-exception-rest-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lifetime Exception Rest API</h1>
+<p><strong>Overview</strong></p>
+<p>| Resource</p>
+<p>| Operation</p>
+<p>| Description</p>
+<p>|
+| ------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------- |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| LifetimeException</p>
+<p>| <a href="#post--lifetime_exceptions-">POST /lifetime_exceptions/</a></p>
+<pre><code class="hljs">                                                      | Create new exception.
+
+                   |
+</code></pre>
+<p>|                     | <a href="#get--lifetime_exceptions-">GET /lifetime_exceptions/</a></p>
+<pre><code class="hljs">                                                       | Get all exceptions.
+
+                     |
+</code></pre>
+<p>| LifetimeExceptionId</p>
+<p>| <a href="#get--lifetime_exceptions-(exception_id)">GET /lifetime_exceptions/(exception_id)</a></p>
+<pre><code class="hljs">                                         | Get an exceptions.
+
+                      |
+</code></pre>
+<p>|                     | <a href="#put--lifetime_exceptions-(exception_id)">PUT /lifetime_exceptions/(exception_id)</a></p>
+<pre><code class="hljs">                                         | Approve/reject exception.
+
+               |
+</code></pre>
+<p><strong>Details</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="post-lifetime_exceptions"></a><a href="#post-lifetime_exceptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/lifetime_exceptions/()</h3>
+<p>Create a new Lifetime Model exception.</p>
+<!-- :quickref: LifetimeException; Create new exception. -->
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **dids** (*string*) – The list of dids.
+
+
+* **pattern** (*string*) – The pattern.
+
+
+* **comments** (*string*) – The comment for the exception.
+
+
+* **expires_at** (*string*) – The expiration date for the exception.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/json
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Created.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token.
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – Lifetime Exception already exists.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>The id for the newly created execption.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-lifetime_exceptions"></a><a href="#get-lifetime_exceptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/lifetime_exceptions/()</h3>
+<p>Retrieve all exceptions.</p>
+<!-- :quickref: LifetimeException; Get all exceptions. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Lifetime Exception Not Found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-lifetime_exceptionsexception_id"></a><a href="#get-lifetime_exceptionsexception_id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/lifetime_exceptions/(exception_id)</h3>
+<p>Retrieve an exception.</p>
+<!-- :quickref: LifetimeExceptionId; Get an exceptions. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **exception_id** – The exception identifier.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Lifetime Exception Not Found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Internal Error.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>List of exceptions.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="put-lifetime_exceptionsexception_id"></a><a href="#put-lifetime_exceptionsexception_id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PUT (/lifetime_exceptions/(exception_id)</h3>
+<p>Approve/Reject an execption.</p>
+<!-- :quickref: LifetimeExceptionId; Approve/reject exception. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **exception_id** – The exception identifier.
+</code></pre>
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **state** (*string*) – the new state (APPROVED/REJECTED)
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Created.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Cannot decode json parameter list.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid Auth Token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Lifetime Exception Not Found.
+</code></pre>
+<ul>
+<li><p><strong>Status 500</strong></p>
+<p>Internal Error.</p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

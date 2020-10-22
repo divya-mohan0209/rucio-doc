@@ -1,0 +1,745 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>restapi/account · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Account Rest API"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="restapi/account · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="# Account Rest API"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">restapi/account</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="account-rest-api"></a><a href="#account-rest-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Account Rest API</h1>
+<p><strong>Overview</strong></p>
+<p>| Resource</p>
+<p>| Operation</p>
+<p>| Description</p>
+<p>|
+| -------- | --------- | ----------- |
+| Account</p>
+<p>| <a href="#get--accounts-">GET /accounts/</a></p>
+<p>| List all accounts.</p>
+<p>|
+| AccountParameter</p>
+<p>| <a href="#put--accounts-(account)">PUT /accounts/(account)</a></p>
+<p>| Update account information.</p>
+<p>|
+|                  | <a href="#post--accounts-(account)">POST /accounts/(account)</a></p>
+<p>| Add account.</p>
+<pre><code class="hljs">            |
+</code></pre>
+<p>|                  | <a href="#get--accounts-(account)">GET /accounts/(account)</a></p>
+<p>| Get account parameters.</p>
+<pre><code class="hljs"> |
+</code></pre>
+<p>|                  | <a href="#delete--accounts-(account)">DELETE /accounts/(account)</a></p>
+<p>| Delete account information.</p>
+<p>|
+| Attributes</p>
+<pre><code class="hljs">   | [POST /accounts/(account)/attr/(key)](#post--accounts-(account)-attr-(key))
+</code></pre>
+<p>| Add account attribute</p>
+<pre><code class="hljs">   |
+</code></pre>
+<p>|                  | <a href="#delete--accounts-(account)-attr-(key)">DELETE /accounts/(account)/attr/(key)</a></p>
+<p>| Delete account attribute</p>
+<pre><code class="hljs">|
+</code></pre>
+<p>|                  | <a href="#get--accounts-(account)-attr">GET /accounts/(account)/attr</a></p>
+<pre><code class="hljs">      | list account attributes.
+
+|
+</code></pre>
+<p>| GlobalAccountLimits</p>
+<p>| <a href="#get--accounts-(account)-limits-global-(rse_expression)">GET /accounts/(account)/limits/global/(rse_expression)</a></p>
+<p>| Get global account limits.</p>
+<p>|
+|                     | <a href="#get--accounts-(account)-limits-global">GET /accounts/(account)/limits/global</a></p>
+<pre><code class="hljs">              |                             |
+</code></pre>
+<p>| GlobalUsage</p>
+<pre><code class="hljs">     | [GET /accounts/(account)/usage/(rse_expression)](#get--accounts-(account)-usage-(rse_expression))
+
+     | Get global account usage.
+</code></pre>
+<p>|
+|                     | <a href="#get--accounts-(account)-usage">GET /accounts/(account)/usage</a></p>
+<pre><code class="hljs">                      |                             |
+</code></pre>
+<p>| Identities</p>
+<pre><code class="hljs">      | [POST /accounts/(account)/identities](#post--accounts-(account)-identities)
+
+                | Add identity to account.
+
+|
+</code></pre>
+<p>|                     | <a href="#get--accounts-(account)-identities">GET /accounts/(account)/identities</a></p>
+<pre><code class="hljs">                 | Get account idenitity mapping.
+</code></pre>
+<p>|
+|                     | <a href="#delete--accounts-(account)-identities">DELETE /accounts/(account)/identities</a></p>
+<pre><code class="hljs">              | Remove identity from account.
+</code></pre>
+<p>|
+| LocalAccountLimits</p>
+<p>| <a href="#get--accounts-(account)-limits-local-(rse)">GET /accounts/(account)/limits/local/(rse)</a></p>
+<pre><code class="hljs">         | Get local account limits.
+
+  |
+</code></pre>
+<p>|                     | <a href="#get--accounts-(account)-limits-local">GET /accounts/(account)/limits/local</a></p>
+<pre><code class="hljs">               |                                |
+</code></pre>
+<p>| LocalUsage</p>
+<pre><code class="hljs">      | [GET /accounts/(account)/usage/(rse)](#get--accounts-(account)-usage-(rse))
+
+                | Get local account usage.
+
+   |
+</code></pre>
+<p>|                     | <a href="#get--accounts-(account)-usage">GET /accounts/(account)/usage</a></p>
+<pre><code class="hljs">                      |                                |
+</code></pre>
+<p>| Rules</p>
+<pre><code class="hljs">           | [GET /accounts/(account)/rules](#get--accounts-(account)-rules)
+
+                      | Get rules for account.
+
+     |
+</code></pre>
+<p>| Scope</p>
+<pre><code class="hljs">           | [POST /accounts/(account)/scopes/(scope)](#post--accounts-(account)-scopes-(scope))
+
+            | Add to account.
+
+            |
+</code></pre>
+<p>| Scopes</p>
+<pre><code class="hljs">          | [GET /accounts/(account)/scopes](#get--accounts-(account)-scopes)
+
+                     | List scope for account.
+
+    |
+</code></pre>
+<p>| UsageHistory</p>
+<pre><code class="hljs">    | [GET /accounts/(account)/usage/history/(rse)](#get--accounts-(account)-usage-history-(rse))
+
+        | Get account usage history.
+
+ |
+</code></pre>
+<p><strong>Details</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="get-accounts"></a><a href="#get-accounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/()</h3>
+<p>list all rucio accounts.</p>
+<!-- :quickref: Account; List all accounts. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list containing all account names as dict.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountlimitsglobalrse_expression"></a><a href="#get-accountsaccountlimitsglobalrse_expression" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/limits/global/(rse_expression)</h3>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountlimitsglobal"></a><a href="#get-accountsaccountlimitsglobal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/limits/global()</h3>
+<p>get the current global limits for an account on a specific RSE expression</p>
+<!-- :quickref: GlobalAccountLimits; Get global account limits. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account name.
+
+
+* **rse_expression** – The rse expression.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/json
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – RSE not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>JSON dict containing informations about the requested user.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountlimitslocalrse"></a><a href="#get-accountsaccountlimitslocalrse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/limits/local/(rse)</h3>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountlimitslocal"></a><a href="#get-accountsaccountlimitslocal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/limits/local()</h3>
+<p>get the current local limits for an account on a specific RSE</p>
+<!-- :quickref: LocalAccountLimits; Get local account limits. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account name.
+
+
+* **rse** – The rse name.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/json
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – RSE not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>JSON dict containing informations about the requested user.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountusagehistoryrse"></a><a href="#get-accountsaccountusagehistoryrse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/usage/history/(rse)</h3>
+<p>Return the account usage of the account.</p>
+<!-- :quickref: UsageHistory; Get account usage history. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account name.
+
+
+* **rse** – The RSE.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/json
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Line separated list of account usages.</p></li>
+</ul>
+<p>Return the account usage of the account.</p>
+<h3><a class="anchor" aria-hidden="true" id="post-accountsaccountidentities"></a><a href="#post-accountsaccountidentities" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/accounts/(account/identities()</h3>
+<p>Grant an identity access to an account.</p>
+<!-- :quickref: Identities; Add identity to account. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – Account identifier.
+</code></pre>
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **identity** (*string*) – The identity name.
+
+
+* **authtype** (*string*) – The auth type of the identity.
+
+
+* **email** (*string*) – The email address.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Successfully added.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Parameter missing.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – Already exists.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountidentities"></a><a href="#get-accountsaccountidentities" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/identities()</h3>
+<p>Get all identities mapped to an account.</p>
+<!-- :quickref: Identities; Get account idenitity mapping. -->
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account identifier.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception
+</code></pre>
+<ul>
+<li><p><strong>Statsu 406</strong></p>
+<p>Not Acceptable.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Line separated dicts of identities.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="delete-accountsaccountidentities"></a><a href="#delete-accountsaccountidentities" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DELETE (/accounts/(account/identities()</h3>
+<p>Delete an account’s identity mapping.</p>
+<!-- :quickref: Identities; Remove identity from account. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – Account identifier.
+</code></pre>
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **identity** (*string*) – The identity name.
+
+
+* **authtype** (*string*) – The authentication type.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – Successfully deleted.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Identity not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="post-accountsaccountscopesscope"></a><a href="#post-accountsaccountscopesscope" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/accounts/(account/scopes/(scope)</h3>
+<p>create scope with given scope name.</p>
+<!-- :quickref: Scope; Add to account. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account identifier.
+
+
+* **scope** – The scope to be added.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Successfully added.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – Scope already exists.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountscopes"></a><a href="#get-accountsaccountscopes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/scopes()</h3>
+<p>list all scopes for an account.</p>
+<!-- :quickref: Scopes; List scope for account. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account identifier.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Scope not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<ul>
+<li><p><strong>Statsu 406</strong></p>
+<p>Not Acceptable</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list containing all scope names for an account.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountusagerse"></a><a href="#get-accountsaccountusagerse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/usage/(rse)</h3>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountusage"></a><a href="#get-accountsaccountusage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/usage()</h3>
+<p>Return the local account usage of the account.</p>
+<!-- :quickref: LocalUsage; Get local account usage. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account name.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – RSE not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Line separated list of account usages.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountusagerse_expression"></a><a href="#get-accountsaccountusagerse_expression" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/usage/(rse_expression)</h3>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountusage-1"></a><a href="#get-accountsaccountusage-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/usage()</h3>
+<p>Return the global account usage of the account.</p>
+<!-- :quickref: GlobalUsage; Get global account usage. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account name.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – RSE not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Line separated list of account usages.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountrules"></a><a href="#get-accountsaccountrules" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/rules()</h3>
+<p>Return all rules of a given account.</p>
+<!-- :quickref: Rules; Get rules for account. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **scope** – The scope name.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/x-json-stream
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Rule not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Line separated list of rules.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="post-accountsaccountattrkey"></a><a href="#post-accountsaccountattrkey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/accounts/(account/attr/(key)</h3>
+<p>Add attributes to an account.</p>
+<!-- :quickref: Attributes; Add account attribute -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – Account identifier.
+
+
+* **key** – The attribute key.
+</code></pre>
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **key** (*string*) – The attribute key.
+
+
+* **value** (*string*) – The attribute value.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Successfully created.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – Attribute already exists.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="delete-accountsaccountattrkey"></a><a href="#delete-accountsaccountattrkey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DELETE (/accounts/(account/attr/(key)</h3>
+<p>Remove attribute from account.</p>
+<!-- :quickref: Attributes; Delete account attribute -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – Account identifier.
+
+
+* **key** – The attribute key.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – Successfully deleted.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccountattr"></a><a href="#get-accountsaccountattr" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account/attr()</h3>
+<p>list all attributes for an account.</p>
+<!-- :quickref: Attributes; list account attributes. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account identifier.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) – application/json
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database Exception.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>JSON dict containing informations about the requested account.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="put-accountsaccount"></a><a href="#put-accountsaccount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PUT (/accounts/(account)</h3>
+<p>update a parameter for a given account name</p>
+<!-- :quickref: AccountParameter; Update account information. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account identifier.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [400 Bad Request](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1) – Unknown status.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="post-accountsaccount"></a><a href="#post-accountsaccount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST (/accounts/(account)</h3>
+<p>create account with given account name.</p>
+<!-- :quickref: AccountParameter; Add account. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account identifier.
+</code></pre>
+<ul>
+<li><strong>Request JSON Object</strong></li>
+</ul>
+<pre><code class="hljs">* **type** (*string*) – The account type.
+
+
+* **email** (*string*) – The account email.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2) – Successfully created.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [409 Conflict](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10) – Account already exists.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-accountsaccount"></a><a href="#get-accountsaccount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/accounts/(account)</h3>
+<p>get account parameters for given account name.</p>
+<!-- :quickref: AccountParameter; Get account parameters. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account identifier.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>JSON dict containing informations about the requested user.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="delete-accountsaccount"></a><a href="#delete-accountsaccount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DELETE (/accounts/(account)</h3>
+<p>disable account with given account name.</p>
+<!-- :quickref: AccountParameter; Delete account information. -->
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **account** – The account identifier.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – OK.
+
+
+* [401 Unauthorized](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2) – Invalid auth token.
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Account not found.
+
+
+* [500 Internal Server Error](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1) – Database exception.
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

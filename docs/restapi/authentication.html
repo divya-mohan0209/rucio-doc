@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>restapi/authentication · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Authentication Rest API"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="restapi/authentication · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="# Authentication Rest API"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">restapi/authentication</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="authentication-rest-api"></a><a href="#authentication-rest-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication Rest API</h1>
+<p><strong>Overview</strong></p>
+<p>| Resource</p>
+<p>| Operation</p>
+<p>| Description</p>
+<p>|
+| ------------------- | ------------------------------------------------------ | ------------------------------ |  |  |  |  |  |  |  |  |  |
+| GSS</p>
+<pre><code class="hljs">             | [GET /auth/gss](#get--auth-gss)
+
+                                      | Authenticate with GSS token
+
+|
+</code></pre>
+<p>| SSH</p>
+<pre><code class="hljs">             | [GET /auth/ssh](#get--auth-ssh)
+
+                                      | Authenticate with SSH key exchange.
+</code></pre>
+<p>|
+| SSHChallengeToken</p>
+<p>| <a href="#get--auth-ssh_challenge_token">GET /auth/ssh_challenge_token</a></p>
+<pre><code class="hljs">                      | Request SSH Challenge Token
+
+     |
+</code></pre>
+<p>| UserPass</p>
+<pre><code class="hljs">        | [GET /auth/userpass](#get--auth-userpass)
+
+                                 | Authenticate with username/password
+</code></pre>
+<p>|
+| Validate</p>
+<pre><code class="hljs">        | [GET /auth/validate](#get--auth-validate)
+
+                                 | Validate a Rucio Auth Token.
+
+    |
+</code></pre>
+<p>| x509</p>
+<pre><code class="hljs">            | [GET /auth/x509](#get--auth-x509)
+
+                                     | Authenticate with x509 certificate.
+</code></pre>
+<p>|
+|                     | <a href="#get--auth-x509_proxy">GET /auth/x509_proxy</a></p>
+<pre><code class="hljs">                               |                                     |
+</code></pre>
+<p><strong>Details</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="get-authssh_challenge_token"></a><a href="#get-authssh_challenge_token" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/auth/ssh_challenge_token()</h3>
+<p>Request a challenge token for SSH authentication</p>
+<!-- :quickref: SSHChallengeToken; Request SSH Challenge Token -->
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* *Rucio-VO* – VO name as a string (Multi-VO only).
+
+
+* *Rucio-Account* – Account identifier as a string.
+
+
+* *Rucio-AppID* – Application identifier as a string.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Access-Control-Allow-Origin](http://www.w3.org/TR/cors/#access-control-allow-origin-response-header) – 
+
+
+* [Access-Control-Allow-Headers](http://www.w3.org/TR/cors/#access-control-allow-headers-response-header) – 
+
+
+* [Access-Control-Allow-Methods](http://www.w3.org/TR/cors/#access-control-allow-methods-response-header) – 
+
+
+* [Access-Control-Allow-Credentials](http://www.w3.org/TR/cors/#access-control-allow-credentials-response-header) – 
+
+
+* [Access-Control-Expose-Headers](http://www.w3.org/TR/cors/#access-control-expose-headers-response-header) – 
+
+
+* *X-Rucio-Auth-Token* – The authentication token
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – Successfully authenticated
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Invalid credentials
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-authx509"></a><a href="#get-authx509" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/auth/x509()</h3>
+<h3><a class="anchor" aria-hidden="true" id="get-authx509_proxy"></a><a href="#get-authx509_proxy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/auth/x509_proxy()</h3>
+<p>Authenticate a Rucio account temporarily via an x509 certificate.</p>
+<!-- :quickref: x509; Authenticate with x509 certificate. -->
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* *Rucio-VO* – VO name as a string (Multi-VO only).
+
+
+* *Rucio-Account* – Account identifier as a string.
+
+
+* *Rucio-AppID* – Application identifier as a string.
+
+
+* *SSLStdEnv* – Apache mod_ssl SSL Standard Env Variables.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Access-Control-Allow-Origin](http://www.w3.org/TR/cors/#access-control-allow-origin-response-header) – 
+
+
+* [Access-Control-Allow-Headers](http://www.w3.org/TR/cors/#access-control-allow-headers-response-header) – 
+
+
+* [Access-Control-Allow-Methods](http://www.w3.org/TR/cors/#access-control-allow-methods-response-header) – 
+
+
+* [Access-Control-Allow-Credentials](http://www.w3.org/TR/cors/#access-control-allow-credentials-response-header) – 
+
+
+* [Access-Control-Expose-Headers](http://www.w3.org/TR/cors/#access-control-expose-headers-response-header) – 
+
+
+* *X-Rucio-Auth-Token* – The authentication token
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – Successfully authenticated
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Invalid credentials
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-authuserpass"></a><a href="#get-authuserpass" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/auth/userpass()</h3>
+<p>Authenticate a Rucio account temporarily via username and password.</p>
+<!-- :quickref: UserPass; Authenticate with username/password -->
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* *X-Rucio-VO* – VO name as a string (Multi-VO Only)
+
+
+* *X-Rucio-Account* – Account identifier as a string.
+
+
+* *X-Rucio-Username* – Username as a string.
+
+
+* *X-Rucio-Password* – password as a text-plain string.
+
+
+* *X-Rucio-AppID* – Application identifier as a string.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Access-Control-Allow-Origin](http://www.w3.org/TR/cors/#access-control-allow-origin-response-header) – 
+
+
+* [Access-Control-Allow-Headers](http://www.w3.org/TR/cors/#access-control-allow-headers-response-header) – 
+
+
+* [Access-Control-Allow-Methods](http://www.w3.org/TR/cors/#access-control-allow-methods-response-header) – 
+
+
+* [Access-Control-Allow-Credentials](http://www.w3.org/TR/cors/#access-control-allow-credentials-response-header) – 
+
+
+* [Access-Control-Expose-Headers](http://www.w3.org/TR/cors/#access-control-expose-headers-response-header) – 
+
+
+* *X-Rucio-Auth-Token* – The authentication token
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – Successfully authenticated
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Invalid credentials
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-authvalidate"></a><a href="#get-authvalidate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/auth/validate()</h3>
+<p>Validate a Rucio Auth Token.</p>
+<!-- :quickref: Validate; Validate a Rucio Auth Token. -->
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* *Rucio-Auth-Token* – as a variable-length string.
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [406 Not Acceptable](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7) – Not Acceptable.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>Tuple(account name, token lifetime).</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get-authgss"></a><a href="#get-authgss" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/auth/gss()</h3>
+<p>Authenticate a Rucio account temporarily via a GSS token.</p>
+<!-- :quickref: GSS; Authenticate with GSS token -->
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* *Rucio-VO* – VO name as a string (Multi-VO only).
+
+
+* *Rucio-Account* – Account identifier as a string.
+
+
+* *Rucio-AppID* – Application identifier as a string.
+
+
+* *SavedCredentials* – Apache mod_auth_kerb SavedCredentials.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Access-Control-Allow-Origin](http://www.w3.org/TR/cors/#access-control-allow-origin-response-header) – 
+
+
+* [Access-Control-Allow-Headers](http://www.w3.org/TR/cors/#access-control-allow-headers-response-header) – 
+
+
+* [Access-Control-Allow-Methods](http://www.w3.org/TR/cors/#access-control-allow-methods-response-header) – 
+
+
+* [Access-Control-Allow-Credentials](http://www.w3.org/TR/cors/#access-control-allow-credentials-response-header) – 
+
+
+* [Access-Control-Expose-Headers](http://www.w3.org/TR/cors/#access-control-expose-headers-response-header) – 
+
+
+* *X-Rucio-Auth-Token* – The authentication token
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – Successfully authenticated
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Invalid credentials
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-authssh"></a><a href="#get-authssh" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET (/auth/ssh()</h3>
+<p>Authenticate a Rucio account temporarily via SSH key exchange.</p>
+<!-- :quickref: SSH; Authenticate with SSH key exchange. -->
+<ul>
+<li><strong>Request Headers</strong></li>
+</ul>
+<pre><code class="hljs">* *Rucio-VO* – VO name as a string (Multi-VO only).
+
+
+* *Rucio-Account* – Account identifier as a string.
+
+
+* *Rucio-SSH-Signature* – Response to server challenge signed with SSH private key as a base64 encoded string.
+
+
+* *Rucio-AppID* – Application identifier as a string.
+</code></pre>
+<ul>
+<li><strong>Response Headers</strong></li>
+</ul>
+<pre><code class="hljs">* [Access-Control-Allow-Origin](http://www.w3.org/TR/cors/#access-control-allow-origin-response-header) – 
+
+
+* [Access-Control-Allow-Headers](http://www.w3.org/TR/cors/#access-control-allow-headers-response-header) – 
+
+
+* [Access-Control-Allow-Methods](http://www.w3.org/TR/cors/#access-control-allow-methods-response-header) – 
+
+
+* [Access-Control-Allow-Credentials](http://www.w3.org/TR/cors/#access-control-allow-credentials-response-header) – 
+
+
+* [Access-Control-Expose-Headers](http://www.w3.org/TR/cors/#access-control-expose-headers-response-header) – 
+
+
+* *X-Rucio-Auth-Token* – The authentication token
+</code></pre>
+<ul>
+<li><strong>Status Codes</strong></li>
+</ul>
+<pre><code class="hljs">* [200 OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) – Successfully authenticated
+
+
+* [404 Not Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5) – Invalid credentials
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

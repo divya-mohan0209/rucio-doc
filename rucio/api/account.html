@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Methods &#8212; Rucio 1.2 documentation</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AccountLimit Methods" href="accountlimit.html" />
+    <link rel="prev" title="The Client API Reference" href="../api.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="accountlimit.html" title="AccountLimit Methods"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../api.html" title="The Client API Reference"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Rucio 1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">The Client API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Account Methods</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="account-methods">
+<h1>Account Methods<a class="headerlink" href="#account-methods" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-rucio.client.accountclient"><span id="account"></span></span><dl class="py class">
+<dt id="rucio.client.accountclient.AccountClient">
+<em class="property">class </em><code class="sig-prename descclassname">rucio.client.accountclient.</code><code class="sig-name descname">AccountClient</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rucio_host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">auth_host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">account</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ca_cert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">auth_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">creds</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">600</span></em>, <em class="sig-param"><span class="n">user_agent</span><span class="o">=</span><span class="default_value">'rucio-clients'</span></em>, <em class="sig-param"><span class="n">vo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rucio.client.baseclient.BaseClient</span></code></p>
+<p>Account client class for working with rucio accounts</p>
+<dl class="py attribute">
+<dt id="rucio.client.accountclient.AccountClient.ACCOUNTS_BASEURL">
+<code class="sig-name descname">ACCOUNTS_BASEURL</code><em class="property"> = 'accounts'</em><a class="headerlink" href="#rucio.client.accountclient.AccountClient.ACCOUNTS_BASEURL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.add_account">
+<code class="sig-name descname">add_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">email</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.add_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the request to create a new account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – the name of the account.</p></li>
+<li><p><strong>type</strong> – The account type</p></li>
+<li><p><strong>email</strong> – The Email address associated with the account.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if account was created successfully else False.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exception.html#rucio.common.exception.Duplicate" title="rucio.common.exception.Duplicate"><strong>Duplicate</strong></a> – if account already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.add_account_attribute">
+<code class="sig-name descname">add_account_attribute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.add_account_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an attribute to an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>key</strong> – The attribute key.</p></li>
+<li><p><strong>value</strong> – The attribute value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.add_identity">
+<code class="sig-name descname">add_identity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">identity</span></em>, <em class="sig-param"><span class="n">authtype</span></em>, <em class="sig-param"><span class="n">email</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.add_identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a membership association between identity and account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>identity</strong> – The identity key name. For example x509 DN, or a username.</p></li>
+<li><p><strong>authtype</strong> – The type of the authentication (x509, gss, userpass).</p></li>
+<li><p><strong>default</strong> – If True, the account should be used by default with the provided identity.</p></li>
+<li><p><strong>email</strong> – The Email address associated with the identity.</p></li>
+<li><p><strong>password</strong> – Password if authtype is userpass.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.del_identity">
+<code class="sig-name descname">del_identity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">identity</span></em>, <em class="sig-param"><span class="n">authtype</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.del_identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an identity’s membership association with an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>identity</strong> – The identity key name. For example x509 DN, or a username.</p></li>
+<li><p><strong>authtype</strong> – The type of the authentication (x509, gss, userpass).</p></li>
+<li><p><strong>default</strong> – If True, the account should be used by default with the provided identity.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.delete_account">
+<code class="sig-name descname">delete_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.delete_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the request to disable an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account</strong> – the name of the account.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True is account was disabled successfully. False otherwise.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exception.html#rucio.common.exception.AccountNotFound" title="rucio.common.exception.AccountNotFound"><strong>AccountNotFound</strong></a> – if account doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.delete_account_attribute">
+<code class="sig-name descname">delete_account_attribute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.delete_account_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an attribute for an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>key</strong> – The attribute key.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_account">
+<code class="sig-name descname">get_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the request to get information about a given account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account</strong> – the name of the account.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of attributes for the account. None if failure.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exception.html#rucio.common.exception.AccountNotFound" title="rucio.common.exception.AccountNotFound"><strong>AccountNotFound</strong></a> – if account doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_account_limits">
+<code class="sig-name descname">get_account_limits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">rse_expression</span></em>, <em class="sig-param"><span class="n">locality</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_account_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the correct account limits for the given locality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>rse_expression</strong> – Valid RSE expression</p></li>
+<li><p><strong>locality</strong> – The scope of the account limit. ‘local’ or ‘global’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_account_usage_history">
+<code class="sig-name descname">get_account_usage_history</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">rse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_account_usage_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the account usage history of this account on rse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>rse</strong> – The rse name.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_global_account_limit">
+<code class="sig-name descname">get_global_account_limit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">rse_expression</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_global_account_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the account limit for the specific RSE expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>rse_expression</strong> – The rse expression.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_global_account_limits">
+<code class="sig-name descname">get_global_account_limits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_global_account_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all RSE expression limits of this account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account</strong> – The account name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_global_account_usage">
+<code class="sig-name descname">get_global_account_usage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">rse_expression</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_global_account_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the account usage for one or all RSE expressions of this account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>rse_expression</strong> – The rse expression.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_local_account_limit">
+<code class="sig-name descname">get_local_account_limit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">rse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_local_account_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the account rse limits of this account for the specific rse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>rse</strong> – The rse name.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_local_account_limits">
+<code class="sig-name descname">get_local_account_limits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_local_account_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the account rse limits of this account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account</strong> – The account name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.get_local_account_usage">
+<code class="sig-name descname">get_local_account_usage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">rse</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.get_local_account_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the account usage for one or all rses of this account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – The account name.</p></li>
+<li><p><strong>rse</strong> – The rse name.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.list_account_attributes">
+<code class="sig-name descname">list_account_attributes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.list_account_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the attributes for an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account</strong> – The account name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.list_account_rules">
+<code class="sig-name descname">list_account_rules</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.list_account_rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the associated rules of an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account</strong> – The account name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.list_accounts">
+<code class="sig-name descname">list_accounts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">identity</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filters</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.list_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the request to list all rucio accounts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> – The account type</p></li>
+<li><p><strong>identity</strong> – The identity key name. For example x509 DN, or a username.</p></li>
+<li><p><strong>filters</strong> – A dictionnary key:account attribute to use for the filtering</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list containing account info dictionary for all rucio accounts.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exception.html#rucio.common.exception.AccountNotFound" title="rucio.common.exception.AccountNotFound"><strong>AccountNotFound</strong></a> – if account doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.list_identities">
+<code class="sig-name descname">list_identities</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.list_identities" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all identities on an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account</strong> – The account name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.update_account">
+<code class="sig-name descname">update_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.update_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a property of an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – Name of the account.</p></li>
+<li><p><strong>key</strong> – Account property like status.</p></li>
+<li><p><strong>value</strong> – Property value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.accountclient.AccountClient.whoami">
+<code class="sig-name descname">whoami</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.accountclient.AccountClient.whoami" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information about account whose token is used</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of attributes for the account. None if failure.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="exception.html#rucio.common.exception.AccountNotFound" title="rucio.common.exception.AccountNotFound"><strong>AccountNotFound</strong></a> – if account doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developing.html">Setting up a Rucio development environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rest.html">RESTful APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">The Client API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Account Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accountlimit.html">AccountLimit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html">Scope Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="did.html">Data Identifier Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta-data.html">Meta-data Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rse.html">RSE Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replica.html">Replica Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule.html">Replication Rule Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lock.html">Lock Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subscription.html">Subscription  Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifetime.html">Lifetime Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="touch.html">Touch Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Configuration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exception.html">Rucio Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ping.html">Ping Method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../database.html">Database operations</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../api.html"
+                        title="previous chapter">The Client API Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="accountlimit.html"
+                        title="next chapter">AccountLimit Methods</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/account.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="accountlimit.html" title="AccountLimit Methods"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../api.html" title="The Client API Reference"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Rucio 1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >The Client API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Account Methods</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2018 CERN for the benefit of the ATLAS collaboration.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

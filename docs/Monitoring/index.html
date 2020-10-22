@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Monitoring · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="There are three different monitoring components:"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Monitoring · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="There are three different monitoring components:"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Rucio Operator Documentation</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Getting Started<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/">Welcome!</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/Before-you-get-started">Before You Get Started</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/What-is-rucio">What is Rucio?</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/Main-components-of-rucio">Main Components of Rucio</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/Additional-layers-and-Resources">Additional Layers and Resources</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/concepts">Concepts</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Try Rucio<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/Try-rucio">Try Rucio!</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/setting-up-demo">Setting up a Rucio demo environment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Using Rucio<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/Clients">Rucio Clients</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/setting-up-rucio-client">Setting Up the Rucio Client</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/using-rucio-client">Using the Rucio Client</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Rucio Operator Documentation<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/installing-rucio-server">Installing Rucio Server</a></li><li class="navListItem"><a class="navItem" href="/rucio-doc/docs/installing-rucio-daemons">Installing Rucio Daemons</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/rucio-doc/docs/Monitoring">Monitoring</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Monitoring</h1></header><article><div><span><p>There are three different monitoring components:</p>
+<ul>
+<li>Rucio internal monitoring using Graphite/Grafana</li>
+<li>Transfer monitoring using the messages sent by Hermes</li>
+<li>File/Dataset Access monitoring using the traces</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="internal-monitoring"></a><a href="#internal-monitoring" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Internal Monitoring</h2>
+<p>This is to monitor the internals of Rucio servers and daemons, e.g.,
+submission rate of the conveyor, state of conveyor queues, reaper
+deletion rate, server response times, server active session, etc. We use
+Graphite<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> for this. It's easy to setup and then you have to point
+your Rucio instance to the Graphite server using the &quot;carbon_server&quot;
+options in the &quot;monitor&quot; section in etc/rucio.cfg.</p>
+<p>The different Rucio components will then send metrics using those
+&quot;record&quot; functions you will find all over the code. Graphite has a
+built-in web interface to show graphs but more comfortable to use is the
+Grafana<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> tool.</p>
+<h2><a class="anchor" aria-hidden="true" id="transfer-monitoring"></a><a href="#transfer-monitoring" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transfer monitoring</h2>
+<p>If a transfer is submitted, queued, waiting, done or failed messages are
+sent to ActiveMQ via Hermes and are also archived in the
+messages_history table. Same is true for deletions. In the case of ATLAS
+we have a dedicated monitoring infrastructure that reads the messages
+from <a href="https://activemq.apache.org">ActiveMQ</a>, aggregates them and then
+writes the aggregated data into ElasticSearch/InfluxDB from where it
+then can be visualised using Kibana/Grafana.</p>
+<h2><a class="anchor" aria-hidden="true" id="access-monitoring"></a><a href="#access-monitoring" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Access monitoring</h2>
+<p>The traces are sent by the pilots or the rucio clients whenever a file
+is downloaded/uploaded.</p>
+<h2><a class="anchor" aria-hidden="true" id="footnotes"></a><a href="#footnotes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Footnotes</h2>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1"  class="footnote-item"><p><a href="https://graphiteapp.org/">https://graphiteapp.org/</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2"  class="footnote-item"><p><a href="https://grafana.com/">https://grafana.com/</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/rucio-doc/docs/installing-rucio-daemons"><span class="arrow-prev">← </span><span>Installing Rucio Daemons</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#internal-monitoring">Internal Monitoring</a></li><li><a href="#transfer-monitoring">Transfer monitoring</a></li><li><a href="#access-monitoring">Access monitoring</a></li><li><a href="#footnotes">Footnotes</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>

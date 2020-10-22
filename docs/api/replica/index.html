@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>api/replica · Rucio Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Replica Methods"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="api/replica · Rucio Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://divya-mohan0209.github.io/rucio-doc/"/><meta property="og:description" content="# Replica Methods"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/rucio-doc/img/wide_logo2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/rucio-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/rucio-doc/css/main.css"/><script src="/rucio-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/rucio-doc/"><img class="logo" src="/rucio-doc/img/wide_logo2.png" alt="Rucio Documentation"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/rucio-doc/docs/" target="_self">Docs</a></li><li class=""><a href="https://rucio.readthedocs.io/_/downloads/en/next/pdf/" target="_self">Downloads</a></li><li class=""><a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing" target="_self">Wiki</a></li><li class=""><a href="https://arxiv.org/abs/1902.09857" target="_self">Scientific articles</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">api/replica</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="replica-methods"></a><a href="#replica-methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Replica Methods</h1>
+<h3><a class="anchor" aria-hidden="true" id="class-rucioclientreplicaclientreplicaclientrucio_hostnone-auth_hostnone-accountnone-ca_certnone-auth_typenone-credsnone-timeout600-user_agentrucio-clients-vonone"></a><a href="#class-rucioclientreplicaclientreplicaclientrucio_hostnone-auth_hostnone-accountnone-ca_certnone-auth_typenone-credsnone-timeout600-user_agentrucio-clients-vonone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class rucio.client.replicaclient.ReplicaClient(rucio_host=None, auth_host=None, account=None, ca_cert=None, auth_type=None, creds=None, timeout=600, user_agent='rucio-clients', vo=None)</h3>
+<p>Bases: <code>rucio.client.baseclient.BaseClient</code></p>
+<p>Replica client class for working with replicas</p>
+<h4><a class="anchor" aria-hidden="true" id="replicas_baseurl--replicas"></a><a href="#replicas_baseurl--replicas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>REPLICAS_BASEURL( = 'replicas')</h4>
+<h4><a class="anchor" aria-hidden="true" id="add_bad_pfnspfns-reason-state-expires_at"></a><a href="#add_bad_pfnspfns-reason-state-expires_at" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_bad_pfns(pfns, reason, state, expires_at)</h4>
+<p>Declare a list of bad replicas.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** – The list of PFNs.
+
+
+* **reason** – The reason of the loss.
+
+
+* **state** – The state of the replica. Either BAD, SUSPICIOUS, TEMPORARY_UNAVAILABLE
+
+
+* **expires_at** – Specify a timeout for the TEMPORARY_UNAVAILABLE replicas. None for BAD files.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if PFNs were created successfully.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="add_replicarse-scope-name-bytes-adler32-pfnnone-md5none-meta"></a><a href="#add_replicarse-scope-name-bytes-adler32-pfnnone-md5none-meta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_replica(rse, scope, name, bytes, adler32, pfn=None, md5=None, meta={})</h4>
+<p>Add file replicas to a RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **scope** – The scope of the file.
+
+
+* **name** – The name of the file.
+
+
+* **bytes** – The size in bytes.
+
+
+* **adler32** – adler32 checksum.
+
+
+* **pfn** – PFN of the file for non deterministic RSE.
+
+
+* **md5** – md5 checksum.
+
+
+* **meta** – Metadata attributes.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if files were created successfully.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="add_replicasrse-files-ignore_availabilitytrue"></a><a href="#add_replicasrse-files-ignore_availabilitytrue" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>add_replicas(rse, files, ignore_availability=True)</h4>
+<p>Bulk add file replicas to a RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **files** – The list of files. This is a list of DIDs like :
+[{‘scope’: &lt;scope1&gt;, ‘name’: &lt;name1&gt;}, {‘scope’: &lt;scope2&gt;, ‘name’: &lt;name2&gt;}, …]
+
+
+* **ignore_availability** – Ignore the RSE blacklisting.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if files were created successfully.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="declare_bad_file_replicaspfns-reason"></a><a href="#declare_bad_file_replicaspfns-reason" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>declare_bad_file_replicas(pfns, reason)</h4>
+<p>Declare a list of bad replicas.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** – The list of PFNs.
+
+
+* **reason** – The reason of the loss.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="declare_suspicious_file_replicaspfns-reason"></a><a href="#declare_suspicious_file_replicaspfns-reason" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>declare_suspicious_file_replicas(pfns, reason)</h4>
+<p>Declare a list of bad replicas.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** – The list of PFNs.
+
+
+* **reason** – The reason of the loss.
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="delete_replicasrse-files-ignore_availabilitytrue"></a><a href="#delete_replicasrse-files-ignore_availabilitytrue" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete_replicas(rse, files, ignore_availability=True)</h4>
+<p>Bulk delete file replicas from a RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **files** – The list of files. This is a list of DIDs like :
+[{‘scope’: &lt;scope1&gt;, ‘name’: &lt;name1&gt;}, {‘scope’: &lt;scope2&gt;, ‘name’: &lt;name2&gt;}, …]
+
+
+* **ignore_availability** – Ignore the RSE blacklisting.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if files have been deleted successfully.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="get_did_from_pfnspfns-rsenone"></a><a href="#get_did_from_pfnspfns-rsenone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_did_from_pfns(pfns, rse=None)</h4>
+<p>Get the DIDs associated to a PFN on one given RSE</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **pfns** – The list of PFNs.
+
+
+* **rse** – The RSE name.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dictionaries {pfn: {‘scope’: scope, ‘name’: name}}</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_dataset_replicasscope-name-deepfalse"></a><a href="#list_dataset_replicasscope-name-deepfalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_dataset_replicas(scope, name, deep=False)</h4>
+<p>List dataset replicas for a did (scope:name).</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **scope** – The scope of the dataset.
+
+
+* **name** – The name of the dataset.
+
+
+* **deep** – Lookup at the file level.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dict dataset replicas.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_dataset_replicas_bulkdids"></a><a href="#list_dataset_replicas_bulkdids" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_dataset_replicas_bulk(dids)</h4>
+<p>List dataset replicas for a did (scope:name).</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>dids</strong> – The list of DIDs of the datasets.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dict dataset replicas.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_dataset_replicas_vpscope-name-deepfalse"></a><a href="#list_dataset_replicas_vpscope-name-deepfalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_dataset_replicas_vp(scope, name, deep=False)</h4>
+<p>List dataset replicas for a DID (scope:name) using the
+Virtual Placement service.</p>
+<p>NOTICE: This is an RnD function and might change or go away at any time.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **scope** – The scope of the dataset.
+
+
+* **name** – The name of the dataset.
+
+
+* **deep** – Lookup at the file level.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>If VP exists a list of dicts of sites</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_datasets_per_rserse-filtersnone-limitnone"></a><a href="#list_datasets_per_rserse-filtersnone-limitnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_datasets_per_rse(rse, filters=None, limit=None)</h4>
+<p>List datasets at a RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the rse name.
+
+
+* **filters** – dictionary of attributes by which the results should be filtered.
+
+
+* **limit** – limit number.
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dict dataset replicas.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="list_replicasdids-schemesnone-unavailablefalse-all_statesfalse-metalinkfalse-rse_expressionnone-client_locationnone-sortnone-domainnone-resolve_archivestrue-resolve_parentsfalse-updated_afternone"></a><a href="#list_replicasdids-schemesnone-unavailablefalse-all_statesfalse-metalinkfalse-rse_expressionnone-client_locationnone-sortnone-domainnone-resolve_archivestrue-resolve_parentsfalse-updated_afternone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>list_replicas(dids, schemes=None, unavailable=False, all_states=False, metalink=False, rse_expression=None, client_location=None, sort=None, domain=None, resolve_archives=True, resolve_parents=False, updated_after=None)</h4>
+<p>List file replicas for a list of data identifiers (DIDs).</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **dids** – The list of data identifiers (DIDs) like :
+[{‘scope’: &lt;scope1&gt;, ‘name’: &lt;name1&gt;}, {‘scope’: &lt;scope2&gt;, ‘name’: &lt;name2&gt;}, …]
+
+
+* **schemes** – A list of schemes to filter the replicas. (e.g. file, http, …)
+
+
+* **unavailable** – Also include unavailable replicas in the list.
+
+
+* **metalink** – `False` (default) retrieves as JSON,
+`True` retrieves as metalink4+xml.
+
+
+* **rse_expression** – The RSE expression to restrict replicas on a set of RSEs.
+
+
+* **client_location** – Client location dictionary for PFN modification {‘ip’, ‘fqdn’, ‘site’}
+
+
+* **sort** – Sort the replicas: `geoip` - based on src/dst IP topographical distance
+`closeness` - based on src/dst closeness
+`dynamic` - Rucio Dynamic Smart Sort (tm)
+
+
+* **domain** – Define the domain. None is fallback to ‘wan’, otherwise ‘wan, ‘lan’, or ‘all’
+
+
+* **resolve_archives** – When set to True, find archives which contain the replicas.
+
+
+* **resolve_parents** – When set to True, find all parent datasets which contain the replicas.
+
+
+* **updated_after** – epoch timestamp or datetime object (UTC time), only return replicas updated after this time
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dictionaries with replica information.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="set_tombstonereplicas"></a><a href="#set_tombstonereplicas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>set_tombstone(replicas)</h4>
+<p>Set a tombstone on a list of replicas.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>replicas</strong> – list of replicas.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="update_replicas_statesrse-files"></a><a href="#update_replicas_statesrse-files" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update_replicas_states(rse, files)</h4>
+<p>Bulk update the file replicas states from a RSE.</p>
+<ul>
+<li><strong>Parameters</strong></li>
+</ul>
+<pre><code class="hljs">* **rse** – the RSE name.
+
+
+* **files** – The list of files. This is a list of DIDs like :
+[{‘scope’: &lt;scope1&gt;, ‘name’: &lt;name1&gt;, ‘state’: &lt;state1&gt;}, {‘scope’: &lt;scope2&gt;, ‘name’: &lt;name2&gt;, ‘state’: &lt;state2&gt;}, …],
+where a state value can be either of:
+‘A’ (available)
+‘S’ (suspicious)
+‘U’ (unavailable)
+‘R’ (recovered)
+‘B’ (bad)
+‘L’ (lost)
+‘D’ (deleted)
+</code></pre>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>True if replica states have been updated successfully, otherwise an exception is raised.</p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="social"><a href="https://twitter.com/RucioData" target="_blank" class="social"><img alt="Twitter" src="/rucio-doc/img/twitter.svg"/></a><a href="https://github.com/rucio" target="_blank" class="social"><img alt="GitHub" src="/rucio-doc/img/github.svg"/></a></section><section class="copyright">Copyright © 2020 CERN. Created with Docusaurus.</section></footer></div></body></html>
