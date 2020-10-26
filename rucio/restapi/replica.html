@@ -100,12 +100,12 @@
 <td><p>create replicas at RSE</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#put--replicas-">PUT /replicas/</a></p></td>
-<td><p>update replicas state.</p></td>
-</tr>
-<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#delete--replicas-">DELETE /replicas/</a></p></td>
 <td><p>Delete replica at RSE.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#put--replicas-">PUT /replicas/</a></p></td>
+<td><p>update replicas state.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ReplicasDIDs</p></td>
 <td><p><a class="reference external" href="#post--replicas-dids">POST /replicas/dids</a></p></td>
@@ -498,28 +498,6 @@
 </dl>
 </dd></dl>
 
-<dl class="http put">
-<dt id="put--replicas-">
-<code class="sig-name descname">PUT </code><code class="sig-name descname">/replicas/</code><a class="headerlink" href="#put--replicas-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update a file replicas state at a given RSE.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>rse</strong> (<em>string</em>) – The RSE name.</p></li>
-<li><p><strong>files</strong> (<em>list</em>) – list of dicts with ‘scope’, ‘name’ and ‘state’.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Status Codes</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Replica successfully updated.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Cannot decode json parameter list.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid auth token.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="http delete">
 <dt id="delete--replicas-">
 <code class="sig-name descname">DELETE </code><code class="sig-name descname">/replicas/</code><a class="headerlink" href="#delete--replicas-" title="Permalink to this definition">¶</a></dt>
@@ -539,6 +517,28 @@
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid auth token.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE not found.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Replica not found.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http put">
+<dt id="put--replicas-">
+<code class="sig-name descname">PUT </code><code class="sig-name descname">/replicas/</code><a class="headerlink" href="#put--replicas-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a file replicas state at a given RSE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rse</strong> (<em>string</em>) – The RSE name.</p></li>
+<li><p><strong>files</strong> (<em>list</em>) – list of dicts with ‘scope’, ‘name’ and ‘state’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Replica successfully updated.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Cannot decode json parameter list.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid auth token.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
 </ul>
 </dd>
@@ -609,8 +609,6 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributor Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developing.html">Setting up a Rucio development environment</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../rest.html">RESTful APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="account.html">Account Rest API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="account_limit.html">Account Limit Rest API</a></li>
@@ -638,7 +636,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">The Client API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../database.html">Database operations</a></li>
 </ul>
 
   <h4>Previous topic</h4>
