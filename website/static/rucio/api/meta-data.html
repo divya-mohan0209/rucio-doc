@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta-data Methods &#8212; Rucio 1.2 documentation</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="RSE Classes" href="rse.html" />
+    <link rel="prev" title="Data Identifier Methods" href="did.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rse.html" title="RSE Classes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="did.html" title="Data Identifier Methods"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Rucio 1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">The Client API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Meta-data Methods</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="meta-data-methods">
+<h1>Meta-data Methods<a class="headerlink" href="#meta-data-methods" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-rucio.client.metaclient"><span id="meta"></span></span><dl class="py class">
+<dt id="rucio.client.metaclient.MetaClient">
+<em class="property">class </em><code class="sig-prename descclassname">rucio.client.metaclient.</code><code class="sig-name descname">MetaClient</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rucio_host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">auth_host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">account</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ca_cert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">auth_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">creds</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">600</span></em>, <em class="sig-param"><span class="n">user_agent</span><span class="o">=</span><span class="default_value">'rucio-clients'</span></em>, <em class="sig-param"><span class="n">vo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.metaclient.MetaClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rucio.client.baseclient.BaseClient</span></code></p>
+<p>Meta client class for working with data identifier attributes</p>
+<dl class="py attribute">
+<dt id="rucio.client.metaclient.MetaClient.META_BASEURL">
+<code class="sig-name descname">META_BASEURL</code><em class="property"> = 'meta'</em><a class="headerlink" href="#rucio.client.metaclient.MetaClient.META_BASEURL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.metaclient.MetaClient.add_key">
+<code class="sig-name descname">add_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">key_type</span></em>, <em class="sig-param"><span class="n">value_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">value_regexp</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.metaclient.MetaClient.add_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the request to add a new key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the name for the new key.</p></li>
+<li><p><strong>key_type</strong> – the type of the key: all(container, dataset, file), collection(dataset or container), file, derived(compute from file for collection).</p></li>
+<li><p><strong>value_type</strong> – the type of the value, if defined.</p></li>
+<li><p><strong>value_regexp</strong> – the regular expression that values should match, if defined.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if key was created successfully.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exception.html#rucio.common.exception.Duplicate" title="rucio.common.exception.Duplicate"><strong>Duplicate</strong></a> – if key already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.metaclient.MetaClient.add_value">
+<code class="sig-name descname">add_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.metaclient.MetaClient.add_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the request to add a value to a key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the name for key.</p></li>
+<li><p><strong>value</strong> – the value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if value was created successfully.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exception.html#rucio.common.exception.Duplicate" title="rucio.common.exception.Duplicate"><strong>Duplicate</strong></a> – if valid already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.metaclient.MetaClient.del_key">
+<code class="sig-name descname">del_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.metaclient.MetaClient.del_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an allowed key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the name for key.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.metaclient.MetaClient.del_value">
+<code class="sig-name descname">del_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.metaclient.MetaClient.del_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a value for a key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the name for key.</p></li>
+<li><p><strong>value</strong> – the value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.metaclient.MetaClient.list_keys">
+<code class="sig-name descname">list_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.metaclient.MetaClient.list_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the request to list all keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list containing the names of all keys.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.metaclient.MetaClient.list_values">
+<code class="sig-name descname">list_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.metaclient.MetaClient.list_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the request to list all values for a key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list containing the names of all values for a key.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rucio.client.metaclient.MetaClient.update_key">
+<code class="sig-name descname">update_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">regepx</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rucio.client.metaclient.MetaClient.update_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the name for key.</p></li>
+<li><p><strong>type</strong> – the type of the value, if defined.</p></li>
+<li><p><strong>regexp</strong> – the regular expression that values should match, if defined.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rest.html">RESTful APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">The Client API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="account.html">Account Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accountlimit.html">AccountLimit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html">Scope Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="did.html">Data Identifier Methods</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meta-data Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rse.html">RSE Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replica.html">Replica Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule.html">Replication Rule Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lock.html">Lock Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subscription.html">Subscription  Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifetime.html">Lifetime Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="touch.html">Touch Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Configuration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exception.html">Rucio Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ping.html">Ping Method</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="did.html"
+                        title="previous chapter">Data Identifier Methods</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rse.html"
+                        title="next chapter">RSE Classes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/meta-data.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rse.html" title="RSE Classes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="did.html" title="Data Identifier Methods"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Rucio 1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >The Client API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Meta-data Methods</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2018 CERN for the benefit of the ATLAS collaboration.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

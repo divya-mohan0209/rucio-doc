@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RESTful APIs &#8212; Rucio 1.2 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Account Rest API" href="restapi/account.html" />
+    <link rel="prev" title="Welcome to Rucio’s API documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="restapi/account.html" title="Account Rest API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Rucio’s API documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Rucio 1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">RESTful APIs</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="restful-apis">
+<h1>RESTful APIs<a class="headerlink" href="#restful-apis" title="Permalink to this headline">¶</a></h1>
+<p>Each resource can be accessed or modified using specially formed URLs and the standard HTTP methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>GET to read</p></li>
+<li><p>POST to create</p></li>
+<li><p>PUT to update</p></li>
+<li><p>DELETE to remove</p></li>
+</ul>
+</div></blockquote>
+<p>We require that all requests are done over SSL. The API supports JSON formats. Rucio uses <a class="reference external" href="http://oauth.net/">OAuth</a>
+to authenticate all API requests. The method is to get an authentication token, and use it for the rest of
+the requests. Descriptions of the actions you may perform on each resource can be found below.</p>
+<p><strong>Date format</strong></p>
+<p>All dates returned are in UTC and are strings in the following format (RFC 1123, ex RFC 822):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mon</span><span class="p">,</span> <span class="mi">13</span> <span class="n">May</span> <span class="mi">2013</span> <span class="mi">10</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">03</span> <span class="n">UTC</span>
+</pre></div>
+</div>
+<p>In code format, which can be used in all programming languages that support strftime or strptime:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;</span><span class="si">%a</span><span class="s1">, </span><span class="si">%d</span><span class="s1"> %b %Y %H:%M:%S UTC&#39;</span>
+</pre></div>
+</div>
+<p><strong>SSL only</strong></p>
+<p>We require that all requests(except for the ping) are done over SSL.</p>
+<p><strong>Response formats</strong></p>
+<p>The currently-available response format for all REST endpoints is the string-based format JavaScript Object Notation(<a class="reference external" href="http://www.json.org/">JSON</a>).
+The server answer can be one of the following content-type in the http Header:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Content</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">json</span><span class="o">-</span><span class="n">stream</span>
+</pre></div>
+</div>
+<p>In the last case, it corresponds to JSON objects delimited by newlines(streaming JSON for large answer), e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">:</span> <span class="s2">&quot;baz&quot;</span> <span class="p">}</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p><strong>Error handling</strong></p>
+<p>Errors are returned using standard HTTP error code syntax.
+Any additional info is included in the header of the return call, JSON-formatted with the parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExceptionClass</span>
+<span class="n">ExceptionMessage</span>
+</pre></div>
+</div>
+<p>Where ExceptionClass refers to <a class="reference internal" href="api/exception.html#exceptions"><span class="std std-ref">Rucio Exceptions</span></a>.</p>
+<p>The methods are separated per resource type.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restapi/account.html">Account Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/account_limit.html">Account Limit Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/archive.html">Archive Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/authentication.html">Authentication Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/config.html">Config Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/did.html">DID Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/heartbeat.html">Heartbeat Rest Api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/identity.html">Identity Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/lifetime_exception.html">Lifetime Exception Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/lock.html">Lock Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/meta.html">Meta Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/nongrid_trace.html">Nongrid Trace Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/ping.html">Ping Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/redirect.html">Redirect Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/replica.html">Replica Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/request.html">Request Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/rse.html">RSE Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/rule.html">Rule Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/scope.html">Scope Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/subscription.html">Subscription Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/temporary_did.html">Temporary DID Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/trace.html">Trace Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/vo.html">VO Rest API</a></li>
+</ul>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RESTful APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restapi/account.html">Account Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/account_limit.html">Account Limit Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/archive.html">Archive Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/authentication.html">Authentication Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/config.html">Config Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/did.html">DID Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/heartbeat.html">Heartbeat Rest Api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/identity.html">Identity Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/lifetime_exception.html">Lifetime Exception Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/lock.html">Lock Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/meta.html">Meta Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/nongrid_trace.html">Nongrid Trace Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/ping.html">Ping Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/redirect.html">Redirect Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/replica.html">Replica Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/request.html">Request Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/rse.html">RSE Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/rule.html">Rule Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/scope.html">Scope Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/subscription.html">Subscription Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/temporary_did.html">Temporary DID Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/trace.html">Trace Rest API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/vo.html">VO Rest API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">The Client API Reference</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Rucio’s API documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="restapi/account.html"
+                        title="next chapter">Account Rest API</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/rest.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="restapi/account.html" title="Account Rest API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Rucio’s API documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Rucio 1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">RESTful APIs</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2018 CERN for the benefit of the ATLAS collaboration.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

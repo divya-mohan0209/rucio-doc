@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Client API Reference &#8212; Rucio 1.2 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Account Methods" href="api/account.html" />
+    <link rel="prev" title="VO Rest API" href="restapi/vo.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api/account.html" title="Account Methods"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="restapi/vo.html" title="VO Rest API"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Rucio 1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">The Client API Reference</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-client-api-reference">
+<h1>The Client API Reference<a class="headerlink" href="#the-client-api-reference" title="Permalink to this headline">¶</a></h1>
+<p>Rucio includes a client class to remove some of the complexities of dealing with raw
+HTTP requests against the RESTful API.</p>
+<p>All client methods are accessible through the high-level class Client. Below is one
+example of using Rucio Client class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rucio.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CLIENT</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CLIENT</span><span class="o">.</span><span class="n">ping</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The methods are separated per resource type.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/account.html">Account Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/accountlimit.html">AccountLimit Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/scope.html">Scope Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/did.html">Data Identifier Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/meta-data.html">Meta-data Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/rse.html">RSE Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/replica.html">Replica Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/rule.html">Replication Rule Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/lock.html">Lock Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/subscription.html">Subscription  Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/lifetime.html">Lifetime Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/touch.html">Touch Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/config.html">Configuration Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/exception.html">Rucio Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/ping.html">Ping Method</a></li>
+</ul>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rest.html">RESTful APIs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Client API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/account.html">Account Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/accountlimit.html">AccountLimit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/scope.html">Scope Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/did.html">Data Identifier Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/meta-data.html">Meta-data Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rse.html">RSE Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/replica.html">Replica Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rule.html">Replication Rule Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lock.html">Lock Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/subscription.html">Subscription  Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lifetime.html">Lifetime Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/touch.html">Touch Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/config.html">Configuration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/exception.html">Rucio Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/ping.html">Ping Method</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="restapi/vo.html"
+                        title="previous chapter">VO Rest API</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api/account.html"
+                        title="next chapter">Account Methods</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api/account.html" title="Account Methods"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="restapi/vo.html" title="VO Rest API"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Rucio 1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">The Client API Reference</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2018 CERN for the benefit of the ATLAS collaboration.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>
