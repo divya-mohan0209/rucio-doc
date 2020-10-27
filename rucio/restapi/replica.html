@@ -65,7 +65,7 @@
 <tbody>
 <tr class="row-even"><td><p>BadPFNs</p></td>
 <td><p><a class="reference external" href="#post--replicas-bad-pfns">POST /replicas/bad/pfns</a></p></td>
-<td><p>Declare bad replicas.</p></td>
+<td><p>Declare bad PFNs.</p></td>
 </tr>
 <tr class="row-odd"><td><p>BadReplicasStates</p></td>
 <td><p><a class="reference external" href="#get--replicas-bad-states">GET /replicas/bad/states</a></p></td>
@@ -96,16 +96,16 @@
 <td><p>List all replicas for did</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--replicas-">POST /replicas/</a></p></td>
-<td><p>create replicas at RSE</p></td>
+<td><p><a class="reference external" href="#put--replicas-">PUT /replicas/</a></p></td>
+<td><p>Update replicas state.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#delete--replicas-">DELETE /replicas/</a></p></td>
-<td><p>Delete replica at RSE.</p></td>
+<td><p><a class="reference external" href="#post--replicas-">POST /replicas/</a></p></td>
+<td><p>Create replicas at RSE</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#put--replicas-">PUT /replicas/</a></p></td>
-<td><p>update replicas state.</p></td>
+<td><p><a class="reference external" href="#delete--replicas-">DELETE /replicas/</a></p></td>
+<td><p>Delete replica at RSE.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ReplicasDIDs</p></td>
 <td><p><a class="reference external" href="#post--replicas-dids">POST /replicas/dids</a></p></td>
@@ -129,7 +129,7 @@
 <dl class="http get">
 <dt id="get--replicas-bad-summary">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/replicas/bad/summary</code><a class="headerlink" href="#get--replicas-bad-summary" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a summary of the bad replicas by incident.</p>
+<dd><p>Returns a summary of the bad replicas by incident.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Query Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -160,7 +160,7 @@
 <dl class="http get">
 <dt id="get--replicas-bad-states">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/replicas/bad/states</code><a class="headerlink" href="#get--replicas-bad-states" title="Permalink to this definition">¶</a></dt>
-<dd><p>List the bad or suspicious replicas by states.</p>
+<dd><p>Lists the bad or suspicious replicas by states.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Query Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -194,7 +194,7 @@
 <dl class="http post">
 <dt id="post--replicas-bad-pfns">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/replicas/bad/pfns</code><a class="headerlink" href="#post--replicas-bad-pfns" title="Permalink to this definition">¶</a></dt>
-<dd><p>Declare a list of bad PFNs.</p>
+<dd><p>Declares a list of bad PFNs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
@@ -227,7 +227,7 @@
 <dl class="http post">
 <dt id="post--replicas-datasets_bulk">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/replicas/datasets_bulk</code><a class="headerlink" href="#post--replicas-datasets_bulk" title="Permalink to this definition">¶</a></dt>
-<dd><p>List dataset replicas for multiple DIDs.</p>
+<dd><p>Lists dataset replicas for multiple DIDs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
@@ -257,7 +257,7 @@
 <dl class="http post">
 <dt id="post--replicas-suspicious">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/replicas/suspicious</code><a class="headerlink" href="#post--replicas-suspicious" title="Permalink to this definition">¶</a></dt>
-<dd><p>Declare a list of suspicious replicas.</p>
+<dd><p>Declares a list of suspicious replicas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
@@ -288,7 +288,7 @@
 <dl class="http post">
 <dt id="post--replicas-tombstone">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/replicas/tombstone</code><a class="headerlink" href="#post--replicas-tombstone" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set a tombstone on a list of replicas.</p>
+<dd><p>Sets a tombstone on a list of replicas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
@@ -314,7 +314,7 @@
 <dl class="http post">
 <dt id="post--replicas-list">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/replicas/list</code><a class="headerlink" href="#post--replicas-list" title="Permalink to this definition">¶</a></dt>
-<dd><p>List all replicas for data identifiers.</p>
+<dd><p>Lists all replicas for data identifiers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
@@ -367,7 +367,7 @@
 <dl class="http post">
 <dt id="post--replicas-dids">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/replicas/dids</code><a class="headerlink" href="#post--replicas-dids" title="Permalink to this definition">¶</a></dt>
-<dd><p>List the DIDs associated to a list of replicas.</p>
+<dd><p>Lists the DIDs associated with a list of replicas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
@@ -389,7 +389,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list of dictionaries containing the mapping PFNs to DIDs.</p>
+<dd class="field-even"><p>A list of dictionaries containing the PFNs to DIDs mapping.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -397,12 +397,12 @@
 <dl class="http post">
 <dt id="post--replicas-bad">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/replicas/bad</code><a class="headerlink" href="#post--replicas-bad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Declare a list of bad replicas.</p>
+<dd><p>Declares a list of bad replicas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pfns</strong> (<em>string</em>) – The list of PFNs.</p></li>
-<li><p><strong>reason</strong> (<em>string</em>) – The reason of the loss.</p></li>
+<li><p><strong>reason</strong> (<em>string</em>) – The reason for the loss.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Response Headers</dt>
@@ -428,7 +428,7 @@
 <dl class="http get">
 <dt id="get--replicas-(scope)-(name)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/replicas/</code><span class="sig-paren">(</span><em class="sig-param">scope</em><span class="sig-paren">)</span><code class="sig-name descname">/</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#get--replicas-(scope)-(name)" title="Permalink to this definition">¶</a></dt>
-<dd><p>List all replicas for data identifiers.</p>
+<dd><p>Lists all replicas for given data identifiers.</p>
 <dl class="simple">
 <dt>HTTP Success:</dt><dd><p>200 OK</p>
 </dd>
@@ -472,10 +472,32 @@
 </dl>
 </dd></dl>
 
+<dl class="http put">
+<dt id="put--replicas-">
+<code class="sig-name descname">PUT </code><code class="sig-name descname">/replicas/</code><a class="headerlink" href="#put--replicas-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a file replicas state at a given RSE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rse</strong> (<em>string</em>) – The RSE name.</p></li>
+<li><p><strong>files</strong> (<em>list</em>) – list of dicts with ‘scope’, ‘name’ and ‘state’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Replica successfully updated.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Cannot decode json parameter list.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid auth token.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="http post">
 <dt id="post--replicas-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/replicas/</code><a class="headerlink" href="#post--replicas-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create file replicas at a given RSE.</p>
+<dd><p>Creates file replicas at a given RSE.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
@@ -501,7 +523,7 @@
 <dl class="http delete">
 <dt id="delete--replicas-">
 <code class="sig-name descname">DELETE </code><code class="sig-name descname">/replicas/</code><a class="headerlink" href="#delete--replicas-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete file replicas at a given RSE.</p>
+<dd><p>Deletes file replicas at a given RSE.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
@@ -523,32 +545,10 @@
 </dl>
 </dd></dl>
 
-<dl class="http put">
-<dt id="put--replicas-">
-<code class="sig-name descname">PUT </code><code class="sig-name descname">/replicas/</code><a class="headerlink" href="#put--replicas-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update a file replicas state at a given RSE.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>rse</strong> (<em>string</em>) – The RSE name.</p></li>
-<li><p><strong>files</strong> (<em>list</em>) – list of dicts with ‘scope’, ‘name’ and ‘state’.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Status Codes</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Replica successfully updated.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Cannot decode json parameter list.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid auth token.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="http get">
 <dt id="get--replicas-rse-(rse)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/replicas/rse/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><a class="headerlink" href="#get--replicas-rse-(rse)" title="Permalink to this definition">¶</a></dt>
-<dd><p>List dataset replicas per RSE.</p>
+<dd><p>Lists dataset replicas per RSE.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Response Headers</dt>
 <dd class="field-odd"><ul class="simple">
@@ -572,7 +572,7 @@
 <dl class="http get">
 <dt id="get--replicas-(scope)-(name)-datasets">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/replicas/</code><span class="sig-paren">(</span><em class="sig-param">scope</em><span class="sig-paren">)</span><code class="sig-name descname">/</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><code class="sig-name descname">/datasets</code><a class="headerlink" href="#get--replicas-(scope)-(name)-datasets" title="Permalink to this definition">¶</a></dt>
-<dd><p>List dataset replicas.</p>
+<dd><p>Lists dataset replicas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Query Parameters</dt>
 <dd class="field-odd"><ul class="simple">

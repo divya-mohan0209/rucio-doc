@@ -69,15 +69,15 @@
 </tr>
 <tr class="row-odd"><td><p>OptionGetDel</p></td>
 <td><p><a class="reference external" href="#get--config-(section)-(option)">GET /config/(section)/(option)</a></p></td>
-<td><p>get config value.</p></td>
+<td><p>Gets config value.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#delete--config-(section)-(option)">DELETE /config/(section)/(option)</a></p></td>
-<td><p>delete an option.</p></td>
+<td><p>Deletes an option.</p></td>
 </tr>
 <tr class="row-odd"><td><p>OptionSet</p></td>
 <td><p><a class="reference external" href="#put--config-(section)-(option)-(value)">PUT /config/(section)/(option)/(value)</a></p></td>
-<td><p>set config value.</p></td>
+<td><p>Set config value.</p></td>
 </tr>
 <tr class="row-even"><td><p>Section</p></td>
 <td><p><a class="reference external" href="#get--config-(section)">GET /config/(section)</a></p></td>
@@ -89,14 +89,14 @@
 <dl class="http put">
 <dt id="put--config-(section)-(option)-(value)">
 <code class="sig-name descname">PUT </code><code class="sig-name descname">/config/</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><code class="sig-name descname">/</code><span class="sig-paren">(</span><em class="sig-param">option</em><span class="sig-paren">)</span><code class="sig-name descname">/</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#put--config-(section)-(option)-(value)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the value of an option.
-If the option does not exist, create it.</p>
+<dd><p>Sets the value of an option.
+If the option does not exist, the API creates it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Status Codes</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Option successfully created or updated.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Configuration Error.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Server Error.</p></li>
 </ul>
 </dd>
 </dl>
@@ -105,7 +105,7 @@ If the option does not exist, create it.</p>
 <dl class="http get">
 <dt id="get--config-(section)-(option)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/config/</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><code class="sig-name descname">/</code><span class="sig-paren">(</span><em class="sig-param">option</em><span class="sig-paren">)</span><a class="headerlink" href="#get--config-(section)-(option)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve the value of an option.</p>
+<dd><p>Retrieves the value of an option.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -132,7 +132,7 @@ If the option does not exist, create it.</p>
 <dl class="http delete">
 <dt id="delete--config-(section)-(option)">
 <code class="sig-name descname">DELETE </code><code class="sig-name descname">/config/</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><code class="sig-name descname">/</code><span class="sig-paren">(</span><em class="sig-param">option</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--config-(section)-(option)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete an option.</p>
+<dd><p>Deletes an option.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Status Codes</dt>
 <dd class="field-odd"><ul class="simple">
@@ -147,7 +147,7 @@ If the option does not exist, create it.</p>
 <dl class="http get">
 <dt id="get--config-(section)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/config/</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#get--config-(section)" title="Permalink to this definition">¶</a></dt>
-<dd><p>List configuration of a section</p>
+<dd><p>Lists configuration of a section</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -174,7 +174,7 @@ If the option does not exist, create it.</p>
 <dl class="http get">
 <dt id="get--config-(section)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/config/</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#get--config-(section)" title="Permalink to this definition">¶</a></dt>
-<dd><p>List full configuration.</p>
+<dd><p>Lists full configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Response Headers</dt>
 <dd class="field-odd"><ul class="simple">

@@ -64,12 +64,12 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>LifetimeException</p></td>
-<td><p><a class="reference external" href="#post--lifetime_exceptions-">POST /lifetime_exceptions/</a></p></td>
-<td><p>Create new exception.</p></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#get--lifetime_exceptions-">GET /lifetime_exceptions/</a></p></td>
 <td><p>Get all exceptions.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--lifetime_exceptions-">POST /lifetime_exceptions/</a></p></td>
+<td><p>Create new exception.</p></td>
 </tr>
 <tr class="row-even"><td><p>LifetimeExceptionId</p></td>
 <td><p><a class="reference external" href="#put--lifetime_exceptions-(exception_id)">PUT /lifetime_exceptions/(exception_id)</a></p></td>
@@ -77,15 +77,37 @@
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#get--lifetime_exceptions-(exception_id)">GET /lifetime_exceptions/(exception_id)</a></p></td>
-<td><p>Get an exceptions.</p></td>
+<td><p>Retrievs an exception.</p></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Details</strong></p>
+<dl class="http get">
+<dt id="get--lifetime_exceptions-">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/lifetime_exceptions/</code><a class="headerlink" href="#get--lifetime_exceptions-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves all exceptions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Response Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-3.1.1.5">Content-Type</a> – application/x-json-stream</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Lifetime Exception Not Found.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7">406 Not Acceptable</a> – Not Acceptable.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="http post">
 <dt id="post--lifetime_exceptions-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/lifetime_exceptions/</code><a class="headerlink" href="#post--lifetime_exceptions-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new Lifetime Model exception.</p>
+<dd><p>Creates a new Lifetime Model exception.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request JSON Object</dt>
 <dd class="field-odd"><ul class="simple">
@@ -115,32 +137,10 @@
 </dl>
 </dd></dl>
 
-<dl class="http get">
-<dt id="get--lifetime_exceptions-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/lifetime_exceptions/</code><a class="headerlink" href="#get--lifetime_exceptions-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve all exceptions.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Response Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-3.1.1.5">Content-Type</a> – application/x-json-stream</p></li>
-</ul>
-</dd>
-<dt class="field-even">Status Codes</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Lifetime Exception Not Found.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7">406 Not Acceptable</a> – Not Acceptable.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="http put">
 <dt id="put--lifetime_exceptions-(exception_id)">
 <code class="sig-name descname">PUT </code><code class="sig-name descname">/lifetime_exceptions/</code><span class="sig-paren">(</span><em class="sig-param">exception_id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--lifetime_exceptions-(exception_id)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Approve/Reject an execption.</p>
+<dd><p>Approves/Rejects an execption.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -169,7 +169,7 @@
 <dl class="http get">
 <dt id="get--lifetime_exceptions-(exception_id)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/lifetime_exceptions/</code><span class="sig-paren">(</span><em class="sig-param">exception_id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--lifetime_exceptions-(exception_id)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve an exception.</p>
+<dd><p>Retrieves an exception.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
