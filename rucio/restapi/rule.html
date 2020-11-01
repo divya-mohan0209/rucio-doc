@@ -1,52 +1,62 @@
-
 <!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>Rucio :: Rule Rest API</title>
+  
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rule Rest API &#8212; Rucio 1.2 documentation</title>
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Scope Rest API" href="scope.html" />
-    <link rel="prev" title="RSE Rest API" href="rse.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../http-routingtable.html" title="HTTP Routing Table"
-             >routing table</a> |</li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="scope.html" title="Scope Rest API"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="rse.html" title="RSE Rest API"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Rucio 1.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../rest.html" accesskey="U">RESTful APIs</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Rule Rest API</a></li> 
-      </ul>
-    </div>  
+  <link rel="icon" type="image/png" sizes="32x32" href="../_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+  <link rel="stylesheet" href="../_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'1.2',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="../index.html"><img src="../_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>Rucio Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>Rule Rest API</h1>
+        </div>
+        <div id="main-content">
+          
   <div class="section" id="rule-rest-api">
 <h1>Rule Rest API<a class="headerlink" href="#rule-rest-api" title="Permalink to this headline">¶</a></h1>
 <p><strong>Overview</strong></p>
@@ -64,12 +74,12 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>AllRule</p></td>
-<td><p><a class="reference external" href="#get--rules-">GET /rules/</a></p></td>
-<td><p>Gets all rules for account</p></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--rules-">POST /rules/</a></p></td>
 <td><p>Create new rule</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--rules-">GET /rules/</a></p></td>
+<td><p>Gets all rules for account</p></td>
 </tr>
 <tr class="row-even"><td><p>MoveRule</p></td>
 <td><p><a class="reference external" href="#post--rules-(rule_id)-mode">POST /rules/(rule_id)/mode</a></p></td>
@@ -88,12 +98,12 @@
 <td><p>Update rule</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--rules-(rule_id)">GET /rules/(rule_id)</a></p></td>
-<td><p>Get rule info</p></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#delete--rules-(rule_id)">DELETE /rules/(rule_id)</a></p></td>
 <td><p>Delete rule</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--rules-(rule_id)">GET /rules/(rule_id)</a></p></td>
+<td><p>Get rule info</p></td>
 </tr>
 <tr class="row-even"><td><p>RuleAnalysis</p></td>
 <td><p><a class="reference external" href="#get--rules-(rule_id)-analysis">GET /rules/(rule_id)/analysis</a></p></td>
@@ -110,32 +120,6 @@
 </tbody>
 </table>
 <p><strong>Details</strong></p>
-<dl class="http get">
-<dt id="get--rules-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/rules/</code><a class="headerlink" href="#get--rules-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns all rules for a given account.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Response Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-3.1.1.5">Content-Type</a> – application/x-json-stream</p></li>
-</ul>
-</dd>
-<dt class="field-even">Status Codes</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – Rule found</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – no rule found for id</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7">406 Not Acceptable</a> – Not Acceptable</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Query Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>scope</strong> – The scope name.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="http post">
 <dt id="post--rules-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/rules/</code><a class="headerlink" href="#post--rules-" title="Permalink to this definition">¶</a></dt>
@@ -187,6 +171,32 @@ NONE - Files will be completely spread over all allowed RSEs without any groupin
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of ids for created rules</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--rules-">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/rules/</code><a class="headerlink" href="#get--rules-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all rules for a given account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Response Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-3.1.1.5">Content-Type</a> – application/x-json-stream</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – Rule found</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – no rule found for id</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7">406 Not Acceptable</a> – Not Acceptable</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scope</strong> – The scope name.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -331,6 +341,21 @@ NONE - Files will be completely spread over all allowed RSEs without any groupin
 </dl>
 </dd></dl>
 
+<dl class="http delete">
+<dt id="delete--rules-(rule_id)">
+<code class="sig-name descname">DELETE </code><code class="sig-name descname">/rules/</code><span class="sig-paren">(</span><em class="sig-param">rule_id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rules-(rule_id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a new replication rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – DIDs found</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – No rule found for id</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="http get">
 <dt id="get--rules-(rule_id)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/rules/</code><span class="sig-paren">(</span><em class="sig-param">rule_id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--rules-(rule_id)" title="Permalink to this definition">¶</a></dt>
@@ -350,32 +375,30 @@ NONE - Files will be completely spread over all allowed RSEs without any groupin
 </dl>
 </dd></dl>
 
-<dl class="http delete">
-<dt id="delete--rules-(rule_id)">
-<code class="sig-name descname">DELETE </code><code class="sig-name descname">/rules/</code><span class="sig-paren">(</span><em class="sig-param">rule_id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rules-(rule_id)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes a new replication rule.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Status Codes</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – DIDs found</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – No rule found for id</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 
 
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul class="current">
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../rest.html">RESTful APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="account.html">Account Rest API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="account_limit.html">Account Limit Rest API</a></li>
@@ -402,62 +425,75 @@ NONE - Files will be completely spread over all allowed RSEs without any groupin
 <li class="toctree-l2"><a class="reference internal" href="vo.html">VO Rest API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../api.html">The Client API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">The Client API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/account.html">Account Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/accountlimit.html">AccountLimit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/scope.html">Scope Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/did.html">Data Identifier Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/meta-data.html">Meta-data Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/rse.html">RSE Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/rse.html#client">Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/rse.html#module-rucio.rse.rsemanager">Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/rse.html#storage">Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/replica.html">Replica Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/rule.html">Replication Rule Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lock.html">Lock Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/subscription.html">Subscription  Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lifetime.html">Lifetime Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/touch.html">Touch Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/config.html">Configuration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/exception.html">Rucio Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/ping.html">Ping Method</a></li>
+</ul>
+</li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="rse.html"
-                        title="previous chapter">RSE Rest API</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="scope.html"
-                        title="next chapter">Scope Rest API</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/restapi/rule.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+  
+
+
         </div>
+
+        
+
       </div>
-      <div class="clearer"></div>
+
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../http-routingtable.html" title="HTTP Routing Table"
-             >routing table</a> |</li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="scope.html" title="Scope Rest API"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="rse.html" title="RSE Rest API"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Rucio 1.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../rest.html" >RESTful APIs</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Rule Rest API</a></li> 
-      </ul>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="../_sources/restapi/rule.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2012-2018 CERN for the benefit of the ATLAS collaboration.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
-    </div>
-  </body>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
 </html>
