@@ -1,7 +1,7 @@
 ---
 id: contributing
 title: Contributing Guide
-sidebar_label: contributing
+sidebar_label: Contributing Guide
 ---
 
 * Thank you for participating!

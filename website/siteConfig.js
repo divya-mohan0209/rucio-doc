@@ -85,7 +85,7 @@ const siteConfig = {
     github: 'rucio',
 },
 
-separateCss:['static/rucio/_static', 'static/rucio'] 
+separateCss:['/rucio/_static/'] 
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.

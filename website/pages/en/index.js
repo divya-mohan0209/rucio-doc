@@ -102,7 +102,7 @@ class Index extends React.Component {
       <Block layout="twoColumn">
         {[
           {
-            content: 'Learn more about Rucio & the motivations behind developing a new-age data management system.',
+            content: 'Learn more about Rucio & the motivations behind developing a new-age scalable data management system.',
             image: `${baseUrl}img/hero.png`,
             imageAlign: 'top',
             imageLink: siteConfig.baseUrl + 'docs/index.html',
