@@ -33,6 +33,9 @@ const siteConfig = {
     {href: 'https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasDistributedComputing', label: 'Wiki'},
     {href: 'https://arxiv.org/abs/1902.09857', label: 'Scientific articles'},
   ],
+
+  //Disabling header title
+
   disableHeaderTitle: true,
 
   // If you have users set above, you add it here:
@@ -71,21 +74,35 @@ const siteConfig = {
     theme: 'default',
   },
 
-  // Add custom scripts here that would be placed in <script> tags.
+// Add custom scripts here that would be placed in <script> tags.
   scripts: ['https://buttons.github.io/buttons.js'],
 
-  // On page navigation for the current documentation page.
+// On page navigation for the current documentation page.
+
   onPageNav: 'separate',
-  // No .html extensions for paths.
+
+// No .html extensions for paths.
+
   cleanUrl: true,
+
+// Collapsible Side Navigation Bar
+
   docsSideNavCollapsible: true,
+
+// Social media handles in the footer
 
   socialMedia: {
     twitter: 'RucioData',
     github: 'rucio',
 },
 
-separateCss:['/rucio/_static/'] 
+//Separating Sphinx CSS from the rest of the documentation
+
+separateCss: "static/rucio/",
+
+//Disabling the Tagline
+
+disableTitleTagline: true,
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
