@@ -1,52 +1,62 @@
-
 <!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>Rucio :: RSE Rest API</title>
+  
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RSE Rest API &#8212; Rucio 1.2 documentation</title>
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Rule Rest API" href="rule.html" />
-    <link rel="prev" title="Request Rest API" href="request.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../http-routingtable.html" title="HTTP Routing Table"
-             >routing table</a> |</li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="rule.html" title="Rule Rest API"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="request.html" title="Request Rest API"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Rucio 1.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../rest.html" accesskey="U">RESTful APIs</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">RSE Rest API</a></li> 
-      </ul>
-    </div>  
+  <link rel="icon" type="image/png" sizes="32x32" href="../_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+  <link rel="stylesheet" href="../_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'1.2',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="../index.html"><img src="../_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>Rucio Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>RSE Rest API</h1>
+        </div>
+        <div id="main-content">
+          
   <div class="section" id="rse-rest-api">
 <h1>RSE Rest API<a class="headerlink" href="#rse-rest-api" title="Permalink to this headline">¶</a></h1>
 <p><strong>Overview</strong></p>
@@ -68,12 +78,12 @@
 <td><p>Translate LFNs to PFNs.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--rses-(rse)-attr-(key)">POST /rses/(rse)/attr/(key)</a></p></td>
-<td><p>Create RSE attribute.</p></td>
-</tr>
-<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#delete--rses-(rse)-attr-(key)">DELETE /rses/(rse)/attr/(key)</a></p></td>
 <td><p>Delete RSE attribute.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--rses-(rse)-attr-(key)">POST /rses/(rse)/attr/(key)</a></p></td>
+<td><p>Create RSE attribute.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#get--rses-(rse)-attr">GET /rses/(rse)/attr</a></p></td>
@@ -84,12 +94,12 @@
 <td><p>Update RSE distance.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#get--rses-(source)-attr-(destination)">GET /rses/(source)/attr/(destination)</a></p></td>
-<td><p>Get RSE distance.</p></td>
-</tr>
-<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--rses-(source)-attr-(destination)">POST /rses/(source)/attr/(destination)</a></p></td>
 <td><p>Create RSE distance.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--rses-(source)-attr-(destination)">GET /rses/(source)/attr/(destination)</a></p></td>
+<td><p>Get RSE distance.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Limits</p></td>
 <td><p><a class="reference external" href="#put--rses-(rse)-limits">PUT /rses/(rse)/limits</a></p></td>
@@ -108,24 +118,24 @@
 <td><p>Delete an RSE protocol.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#get--rses-(rse)-protocols-(scheme)">GET /rses/(rse)/protocols/(scheme)</a></p></td>
-<td><p>List RSE protocol.</p></td>
-</tr>
-<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--rses-(rse)-protocols-(scheme)">POST /rses/(rse)/protocols/(scheme)</a></p></td>
 <td><p>Create an RSE protocol.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--rses-(rse)-protocols-(scheme)">GET /rses/(rse)/protocols/(scheme)</a></p></td>
+<td><p>List RSE protocol.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Protocols</p></td>
 <td><p><a class="reference external" href="#get--rses-(rse)-protocols">GET /rses/(rse)/protocols</a></p></td>
 <td><p>List all RSE protocols.</p></td>
 </tr>
 <tr class="row-even"><td><p>QoSPolicy</p></td>
-<td><p><a class="reference external" href="#post--rses-(rse)-qos_policy-(policy)">POST /rses/(rse)/qos_policy/(policy)</a></p></td>
-<td><p>Add QoS policy to RSE.</p></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#delete--rses-(rse)-qos_policy-(policy)">DELETE /rses/(rse)/qos_policy/(policy)</a></p></td>
 <td><p>Delete QoS policy from RSE.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--rses-(rse)-qos_policy-(policy)">POST /rses/(rse)/qos_policy/(policy)</a></p></td>
+<td><p>Add QoS policy to RSE.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#get--rses-(rse)-qos_policy">GET /rses/(rse)/qos_policy</a></p></td>
@@ -136,16 +146,16 @@
 <td><p>Update an RSE.</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--rses-(rse)">GET /rses/(rse)</a></p></td>
-<td><p>Get RSE details.</p></td>
+<td><p><a class="reference external" href="#delete--rses-(rse)">DELETE /rses/(rse)</a></p></td>
+<td><p>disable RSE.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--rses-(rse)">POST /rses/(rse)</a></p></td>
 <td><p>Create a new RSE.</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#delete--rses-(rse)">DELETE /rses/(rse)</a></p></td>
-<td><p>disable RSE.</p></td>
+<td><p><a class="reference external" href="#get--rses-(rse)">GET /rses/(rse)</a></p></td>
+<td><p>Get RSE details.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RSEAccountUsageLimit</p></td>
 <td><p><a class="reference external" href="#get--rses-(rse)-accounts-usage">GET /rses/(rse)/accounts/usage</a></p></td>
@@ -260,28 +270,6 @@
 </dl>
 </dd></dl>
 
-<dl class="http post">
-<dt id="post--rses-(rse)-qos_policy-(policy)">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/qos_policy/</code><span class="sig-paren">(</span><em class="sig-param">policy</em><span class="sig-paren">)</span><a class="headerlink" href="#post--rses-(rse)-qos_policy-(policy)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add QoS policy to RSE</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>rse</strong> – The RSE name.</p></li>
-<li><p><strong>qos_policy</strong> – The QoS policy name.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Status Codes</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Created.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE Not Found.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="http delete">
 <dt id="delete--rses-(rse)-qos_policy-(policy)">
 <code class="sig-name descname">DELETE </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/qos_policy/</code><span class="sig-paren">(</span><em class="sig-param">policy</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rses-(rse)-qos_policy-(policy)" title="Permalink to this definition">¶</a></dt>
@@ -298,6 +286,28 @@
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE not found.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--rses-(rse)-qos_policy-(policy)">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/qos_policy/</code><span class="sig-paren">(</span><em class="sig-param">policy</em><span class="sig-paren">)</span><a class="headerlink" href="#post--rses-(rse)-qos_policy-(policy)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add QoS policy to RSE</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rse</strong> – The RSE name.</p></li>
+<li><p><strong>qos_policy</strong> – The QoS policy name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Created.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE Not Found.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
 </ul>
 </dd>
@@ -391,6 +401,36 @@ and port are used as unique identifier they are immutable.</p>
 </dl>
 </dd></dl>
 
+<dl class="http post">
+<dt id="post--rses-(rse)-protocols-(scheme)">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/protocols/</code><span class="sig-paren">(</span><em class="sig-param">scheme</em><span class="sig-paren">)</span><a class="headerlink" href="#post--rses-(rse)-protocols-(scheme)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a protocol for a given RSE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rse</strong> – The RSE name.</p></li>
+<li><p><strong>scheme</strong> – The protocol identifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>paramaters</strong> (<em>dict</em>) – parameter of the new protocol entry.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Created.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Cannot decode json parameter dictionary.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE not found.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE Protocol Domain Not Supported.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10">409 Conflict</a> – RSE Protocol Priority Error.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="http get">
 <dt id="get--rses-(rse)-protocols-(scheme)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/protocols/</code><span class="sig-paren">(</span><em class="sig-param">scheme</em><span class="sig-paren">)</span><a class="headerlink" href="#get--rses-(rse)-protocols-(scheme)" title="Permalink to this definition">¶</a></dt>
@@ -419,36 +459,6 @@ and port are used as unique identifier they are immutable.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A list with detailed protocol information.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="http post">
-<dt id="post--rses-(rse)-protocols-(scheme)">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/protocols/</code><span class="sig-paren">(</span><em class="sig-param">scheme</em><span class="sig-paren">)</span><a class="headerlink" href="#post--rses-(rse)-protocols-(scheme)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a protocol for a given RSE.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>rse</strong> – The RSE name.</p></li>
-<li><p><strong>scheme</strong> – The protocol identifier.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>paramaters</strong> (<em>dict</em>) – parameter of the new protocol entry.</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Status Codes</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Created.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Cannot decode json parameter dictionary.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE not found.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE Protocol Domain Not Supported.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10">409 Conflict</a> – RSE Protocol Priority Error.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -643,6 +653,29 @@ value is the corresponding PFN.</p>
 </dl>
 </dd></dl>
 
+<dl class="http delete">
+<dt id="delete--rses-(rse)-attr-(key)">
+<code class="sig-name descname">DELETE </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/attr/</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rses-(rse)-attr-(key)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an RSE attribute for given RSE name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rse</strong> – RSE name.</p></li>
+<li><p><strong>key</strong> – The key name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE not found.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE attribute not found.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="http post">
 <dt id="post--rses-(rse)-attr-(key)">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/attr/</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#post--rses-(rse)-attr-(key)" title="Permalink to this definition">¶</a></dt>
@@ -666,29 +699,6 @@ value is the corresponding PFN.</p>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Key not defined.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10">409 Conflict</a> – Attribute already exists.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="http delete">
-<dt id="delete--rses-(rse)-attr-(key)">
-<code class="sig-name descname">DELETE </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><code class="sig-name descname">/attr/</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rses-(rse)-attr-(key)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete an RSE attribute for given RSE name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>rse</strong> – RSE name.</p></li>
-<li><p><strong>key</strong> – The key name.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Status Codes</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE not found.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE attribute not found.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
 </ul>
 </dd>
@@ -747,6 +757,29 @@ value is the corresponding PFN.</p>
 </dl>
 </dd></dl>
 
+<dl class="http post">
+<dt id="post--rses-(source)-attr-(destination)">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">source</em><span class="sig-paren">)</span><code class="sig-name descname">/attr/</code><span class="sig-paren">(</span><em class="sig-param">destination</em><span class="sig-paren">)</span><a class="headerlink" href="#post--rses-(source)-attr-(destination)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create distance information between source RSE and destination RSE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> – The source RSE name.</p></li>
+<li><p><strong>destination</strong> – The destination RSE name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Created.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Cannot decode json parameter dictionary.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE Not Found.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="http get">
 <dt id="get--rses-(source)-attr-(destination)">
 <code class="sig-name descname">GET </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">source</em><span class="sig-paren">)</span><code class="sig-name descname">/attr/</code><span class="sig-paren">(</span><em class="sig-param">destination</em><span class="sig-paren">)</span><a class="headerlink" href="#get--rses-(source)-attr-(destination)" title="Permalink to this definition">¶</a></dt>
@@ -773,29 +806,6 @@ value is the corresponding PFN.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>List of dictionaries with RSE distances.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="http post">
-<dt id="post--rses-(source)-attr-(destination)">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">source</em><span class="sig-paren">)</span><code class="sig-name descname">/attr/</code><span class="sig-paren">(</span><em class="sig-param">destination</em><span class="sig-paren">)</span><a class="headerlink" href="#post--rses-(source)-attr-(destination)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create distance information between source RSE and destination RSE.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>source</strong> – The source RSE name.</p></li>
-<li><p><strong>destination</strong> – The destination RSE name.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Status Codes</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> – Created.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Cannot decode json parameter dictionary.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE Not Found.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -828,32 +838,23 @@ value is the corresponding PFN.</p>
 </dl>
 </dd></dl>
 
-<dl class="http get">
-<dt id="get--rses-(rse)">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><a class="headerlink" href="#get--rses-(rse)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieves details about a specific RSE.</p>
+<dl class="http delete">
+<dt id="delete--rses-(rse)">
+<code class="sig-name descname">DELETE </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rses-(rse)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable RSE with given RSE name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>rse</strong> – the RSE name.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Response Headers</dt>
+<dt class="field-even">Status Codes</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-3.1.1.5">Content-Type</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Status Codes</dt>
-<dd class="field-odd"><ul class="simple">
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE not found.</p></li>
-<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7">406 Not Acceptable</a> – Not Acceptable.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list containing all RSEs.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -899,23 +900,32 @@ value is the corresponding PFN.</p>
 </dl>
 </dd></dl>
 
-<dl class="http delete">
-<dt id="delete--rses-(rse)">
-<code class="sig-name descname">DELETE </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rses-(rse)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Disable RSE with given RSE name.</p>
+<dl class="http get">
+<dt id="get--rses-(rse)">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/rses/</code><span class="sig-paren">(</span><em class="sig-param">rse</em><span class="sig-paren">)</span><a class="headerlink" href="#get--rses-(rse)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves details about a specific RSE.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>rse</strong> – the RSE name.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Status Codes</dt>
+<dt class="field-even">Response Headers</dt>
 <dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-3.1.1.5">Content-Type</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Invalid Auth Token.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – RSE not found.</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7">406 Not Acceptable</a> – Not Acceptable.</p></li>
 <li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list containing all RSEs.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -923,14 +933,27 @@ value is the corresponding PFN.</p>
 </div>
 
 
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul class="current">
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../rest.html">RESTful APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="account.html">Account Rest API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="account_limit.html">Account Limit Rest API</a></li>
@@ -957,62 +980,75 @@ value is the corresponding PFN.</p>
 <li class="toctree-l2"><a class="reference internal" href="vo.html">VO Rest API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../api.html">The Client API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">The Client API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/account.html">Account Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/accountlimit.html">AccountLimit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/scope.html">Scope Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/did.html">Data Identifier Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/meta-data.html">Meta-data Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/rse.html">RSE Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/rse.html#client">Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/rse.html#module-rucio.rse.rsemanager">Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/rse.html#storage">Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/replica.html">Replica Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/rule.html">Replication Rule Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lock.html">Lock Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/subscription.html">Subscription  Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lifetime.html">Lifetime Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/touch.html">Touch Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/config.html">Configuration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/exception.html">Rucio Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/ping.html">Ping Method</a></li>
+</ul>
+</li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="request.html"
-                        title="previous chapter">Request Rest API</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="rule.html"
-                        title="next chapter">Rule Rest API</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/restapi/rse.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+  
+
+
         </div>
+
+        
+
       </div>
-      <div class="clearer"></div>
+
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../http-routingtable.html" title="HTTP Routing Table"
-             >routing table</a> |</li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="rule.html" title="Rule Rest API"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="request.html" title="Request Rest API"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Rucio 1.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../rest.html" >RESTful APIs</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">RSE Rest API</a></li> 
-      </ul>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="../_sources/restapi/rse.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2012-2018 CERN for the benefit of the ATLAS collaboration.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
-    </div>
-  </body>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
 </html>

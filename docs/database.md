@@ -1,4 +1,8 @@
-# Database operations
+---
+id: database
+title: Database Operations
+sidebar_label: Database Operations
+---
 
 ## Supported databases
 

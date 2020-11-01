@@ -55,3 +55,14 @@ before you ensure you've read through the pre-requisites section under each of t
 - [Installing Rucio Server](installing-rucio-server)
 - [Installing Rucio Daemons](installing-rucio-daemons)
 - [Monitoring](Monitoring)
+
+## [Rucio Developer Documentation](developer)
+
+Whether you want to develop with Rucio or contribute to the project, the Developer
+documentation will help you get started. Peruse some common REST API & Client API
+references that are directly derived from [Rucio's python libraries](). We also
+have a contribution guide for those who wish to pitch in.
+
+- [API Documentation - both REST & Client](/rucio-doc/rucio/index.html)
+- [Database](database)
+- [Contributing guide](contributing)

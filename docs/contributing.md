@@ -1,5 +1,8 @@
-# Contributor Guide
-
+---
+id: contributing
+title: Contributing Guide
+sidebar_label: contributing
+---
 
 * Thank you for participating!
 
